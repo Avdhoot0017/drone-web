@@ -1,26 +1,598 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ==========================================================================
+   SCHNELL DRONE TECHNOLOGIES — GLOBAL DESIGN SYSTEM
+   --------------------------------------------------------------------------
+   SINGLE SOURCE OF TRUTH FOR BRAND COLOUR.
+   To re-brand the entire site, change ONLY the three values in
+   `BRAND COLOUR SEED` below. Every shade, tint, border, ring, gradient and
+   component colour on the site is derived from them.
+   ========================================================================== */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* ---------------------------------------------------------------------
+       1. BRAND COLOUR SEED  ← change these 3 values to re-brand the site
+       Sampled from the Schnell logo: #EF1C25
+       --------------------------------------------------------------------- */
+    --brand-h: 357; /* hue        */
+    --brand-s: 87%; /* saturation */
+    --brand-l: 52%; /* lightness  */
+
+    /* ---------------------------------------------------------------------
+       2. DERIVED BRAND SCALE — all computed from the seed above.
+       500 is the exact logo red. Tints (50–200) are the "very faint red"
+       used for large surfaces; the parent red is reserved for accents.
+       --------------------------------------------------------------------- */
+    --brand-50: hsl(var(--brand-h) 100% 97.5%);
+    --brand-100: hsl(var(--brand-h) 96% 94.5%);
+    --brand-200: hsl(var(--brand-h) 94% 89%);
+    --brand-300: hsl(var(--brand-h) 92% 80%);
+    --brand-400: hsl(var(--brand-h) 90% 67%);
+    --brand-500: hsl(var(--brand-h) var(--brand-s) var(--brand-l)); /* #EF1C25 */
+    --brand-600: hsl(var(--brand-h) 82% 45%);
+    --brand-700: hsl(var(--brand-h) 80% 37%);
+    --brand-800: hsl(var(--brand-h) 76% 30%);
+    --brand-900: hsl(var(--brand-h) 70% 25%);
+    --brand-950: hsl(var(--brand-h) 80% 14%);
+
+    /*
+       MATTE RED — the fill used for buttons and solid CTAs.
+       The logo red (500) is deliberately vivid, which reads as glossy across a
+       large filled area. Dropping the saturation and lightness gives a flat,
+       matte surface that still reads as the same brand colour beside the logo.
+       Derived from the same seed, so re-branding carries through.
+    */
+    --brand-matte: hsl(var(--brand-h) 68% 45%);
+    --brand-matte-hover: hsl(var(--brand-h) 70% 39%);
+
+    /* Transparent brand washes — for overlays, hovers and focus rings */
+    --brand-a05: hsl(var(--brand-h) var(--brand-s) var(--brand-l) / 0.05);
+    --brand-a10: hsl(var(--brand-h) var(--brand-s) var(--brand-l) / 0.1);
+    --brand-a20: hsl(var(--brand-h) var(--brand-s) var(--brand-l) / 0.2);
+    --brand-a40: hsl(var(--brand-h) var(--brand-s) var(--brand-l) / 0.4);
+
+    /* ---------------------------------------------------------------------
+       3. NEUTRALS — warm-tinted greys so white/grey surfaces sit with the red
+       --------------------------------------------------------------------- */
+    --ink-950: hsl(var(--brand-h) 12% 8%); /* headings   */
+    --ink-800: hsl(var(--brand-h) 8% 16%); /* body       */
+    --ink-600: hsl(var(--brand-h) 6% 34%); /* secondary  */
+    --ink-500: hsl(var(--brand-h) 5% 46%); /* muted      */
+    --ink-300: hsl(var(--brand-h) 8% 78%);
+    --ink-200: hsl(var(--brand-h) 10% 89%); /* borders    */
+    --ink-100: hsl(var(--brand-h) 14% 94%); /* light bg   */
+    --ink-50: hsl(var(--brand-h) 20% 97%); /* section bg */
+
+    /* ---------------------------------------------------------------------
+       4. SEMANTIC TOKENS (shadcn contract) — mapped onto the brand scale
+       --------------------------------------------------------------------- */
+    --background: #ffffff;
+    --foreground: var(--ink-800);
+
+    --card: #ffffff;
+    --card-foreground: var(--ink-800);
+    --popover: #ffffff;
+    --popover-foreground: var(--ink-800);
+
+    --primary: var(--brand-500);
+    --primary-foreground: #ffffff;
+
+    --secondary: var(--ink-100);
+    --secondary-foreground: var(--ink-950);
+
+    --muted: var(--ink-50);
+    --muted-foreground: var(--ink-500);
+
+    --accent: var(--brand-50);
+    --accent-foreground: var(--brand-700);
+
+    --destructive: var(--brand-600);
+    --destructive-foreground: #ffffff;
+
+    --border: var(--ink-200);
+    --input: var(--ink-200);
+    --ring: var(--brand-500);
+
+    --chart-1: var(--brand-500);
+    --chart-2: var(--brand-700);
+    --chart-3: var(--brand-300);
+    --chart-4: var(--ink-500);
+    --chart-5: var(--ink-300);
+
+    --sidebar: var(--ink-50);
+    --sidebar-foreground: var(--ink-800);
+    --sidebar-primary: var(--brand-500);
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: var(--brand-50);
+    --sidebar-accent-foreground: var(--brand-700);
+    --sidebar-border: var(--ink-200);
+    --sidebar-ring: var(--brand-500);
+
+    /* ---------------------------------------------------------------------
+       5. SHAPE, ELEVATION & MOTION
+       --------------------------------------------------------------------- */
+    --radius: 0.5rem;
+
+    --shadow-soft: 0 1px 2px hsl(var(--brand-h) 12% 8% / 0.04),
+      0 4px 16px hsl(var(--brand-h) 12% 8% / 0.06);
+    --shadow-lift: 0 2px 4px hsl(var(--brand-h) 12% 8% / 0.05),
+      0 12px 32px hsl(var(--brand-h) 12% 8% / 0.1);
+    --shadow-brand: 0 6px 24px hsl(var(--brand-h) var(--brand-s) var(--brand-l) / 0.28);
+
+    /* Motion — one place to tune the feel of every transition on the site */
+    --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+    --dur-fast: 180ms;
+    --dur-base: 320ms;
+    --dur-slow: 620ms;
+    --dur-image: 700ms;
+
+    /* Layout */
+    --header-top-h: 2.5rem;
+    --header-nav-h: 5rem;
+    --container-max: 84rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* --------------------------------------------------------------------------
+   6. TAILWIND THEME BRIDGE — exposes the tokens above as utility classes,
+   e.g. `bg-brand-500`, `text-ink-600`, `shadow-lift`, `ease-out-soft`.
+   -------------------------------------------------------------------------- */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand scale */
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
+  --color-brand-matte: var(--brand-matte);
+  --color-brand-matte-hover: var(--brand-matte-hover);
+
+  /* Neutral ink scale */
+  --color-ink-50: var(--ink-50);
+  --color-ink-100: var(--ink-100);
+  --color-ink-200: var(--ink-200);
+  --color-ink-300: var(--ink-300);
+  --color-ink-500: var(--ink-500);
+  --color-ink-600: var(--ink-600);
+  --color-ink-800: var(--ink-800);
+  --color-ink-950: var(--ink-950);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-display), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+  --shadow-brand: var(--shadow-brand);
+
+  --ease-out-soft: var(--ease-out-soft);
+  --ease-in-out-soft: var(--ease-in-out-soft);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+/* --------------------------------------------------------------------------
+   7. BASE ELEMENT STYLES
+   -------------------------------------------------------------------------- */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+    /* Offset anchor jumps so the sticky header never covers a heading */
+    scroll-padding-top: calc(var(--header-nav-h) + 1.5rem);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading text-ink-950;
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: var(--brand-500);
+    color: #fff;
+  }
+
+  /* Consistent, brand-coloured focus ring across the whole site */
+  :focus-visible {
+    outline: 2px solid var(--brand-500);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   8. MOTION SYSTEM
+   Scroll-reveal primitives consumed by <Reveal />. Content starts hidden and
+   is revealed by an IntersectionObserver toggling [data-revealed].
+   -------------------------------------------------------------------------- */
+@layer components {
+  [data-reveal] {
+    opacity: 0;
+    transition:
+      opacity var(--dur-slow) var(--ease-out-soft),
+      transform var(--dur-slow) var(--ease-out-soft);
+    transition-delay: var(--reveal-delay, 0ms);
+    will-change: opacity, transform;
+  }
+
+  [data-reveal="up"] {
+    transform: translate3d(0, 28px, 0);
+  }
+  [data-reveal="down"] {
+    transform: translate3d(0, -28px, 0);
+  }
+  [data-reveal="left"] {
+    transform: translate3d(32px, 0, 0);
+  }
+  [data-reveal="right"] {
+    transform: translate3d(-32px, 0, 0);
+  }
+  [data-reveal="zoom"] {
+    transform: scale(0.94);
+  }
+  [data-reveal="fade"] {
+    transform: none;
+  }
+
+  [data-reveal][data-revealed="true"] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  /* Ken-burns style image zoom used on every media card */
+  .media-zoom img {
+    transition: transform var(--dur-image) var(--ease-out-soft);
+  }
+  .media-zoom:hover img,
+  .media-zoom:focus-within img {
+    transform: scale(1.06);
+  }
+
+  /*
+    Mega-menu panel reveal.
+
+    The panel rolls down from under the header rather than simply fading:
+    `clip-path` animates the visible area without needing to know the panel's
+    height, so it works for panels of any size and stays on the compositor.
+    The inner content lags slightly behind for a layered feel.
+  */
+  /*
+    Durations are declared per-state, not once on the base rule: a transition
+    uses the timing of the state it is moving *to*. Opening is slow and
+    deliberate; closing is quick, because a menu that lingers on the way out
+    feels unresponsive.
+  */
+  .mega-panel {
+    clip-path: inset(0 0 100% 0);
+    opacity: 0;
+    transform: translateY(-8px);
+    /* Closing */
+    transition:
+      clip-path 300ms var(--ease-out-soft),
+      opacity 220ms var(--ease-out-soft),
+      transform 300ms var(--ease-out-soft);
+  }
+
+  .mega-panel > * {
+    opacity: 0;
+    transform: translateY(-14px);
+    transition:
+      opacity 200ms var(--ease-out-soft),
+      transform 240ms var(--ease-out-soft);
+  }
+
+  /* Opening */
+  .mega-panel[data-open="true"] {
+    clip-path: inset(0 0 0 0);
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      clip-path 720ms var(--ease-out-soft),
+      opacity 420ms var(--ease-out-soft),
+      transform 720ms var(--ease-out-soft);
+  }
+
+  .mega-panel[data-open="true"] > * {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 520ms var(--ease-out-soft) 160ms,
+      transform 620ms var(--ease-out-soft) 160ms;
+  }
+
+  /*
+    Page dimming behind an open mega menu.
+    Drawn on the body (not inside the header) so it sits below the z-50 header
+    but above page content — an overlay nested in the header would paint over
+    the header's own background.
+  */
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    background: hsl(var(--brand-h) 20% 6% / 0.28);
+    opacity: 0;
+    pointer-events: none;
+    /* Fades out faster than it fades in, matching the panel's own timing. */
+    transition: opacity 280ms var(--ease-out-soft);
+  }
+  body[data-mega-open]::after {
+    opacity: 1;
+    transition: opacity 560ms var(--ease-out-soft);
+  }
+
+  /*
+    Hero carousel progress indicator. The fill width is driven by CSS so the
+    countdown stays smooth without a per-frame React re-render; the duration is
+    supplied inline from the slide interval.
+  */
+  @keyframes hero-progress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  .animate-hero-progress {
+    animation: hero-progress linear forwards;
+  }
+
+  /*
+    Testimonial marquee.
+
+    Each row renders its cards twice; the track translates by exactly half its
+    width, so the second copy lands where the first began and the loop is
+    seamless. Duration is set per-row inline from the card count, keeping the
+    scroll speed constant regardless of how many testimonials there are.
+  */
+  @keyframes marquee-left {
+    from {
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+
+  @keyframes marquee-right {
+    from {
+      transform: translate3d(-50%, 0, 0);
+    }
+    to {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation-duration: var(--marquee-duration, 60s);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+
+  .marquee-track[data-direction="left"] {
+    animation-name: marquee-left;
+  }
+  .marquee-track[data-direction="right"] {
+    animation-name: marquee-right;
+  }
+
+  /* Hovering or keyboard-focusing a row holds it still so it can be read. */
+  .marquee-row:hover .marquee-track,
+  .marquee-row:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+      transform: none;
+    }
+    /* Without motion the row becomes a normal horizontal scroller. */
+    .marquee-row {
+      overflow-x: auto;
+    }
+  }
+
+  /*
+    Hover treatment for the decorative drone sketch: it lifts, grows very
+    slightly and picks up a soft brand-red glow. Kept here rather than as
+    utility classes so the timing shares the site's motion tokens.
+  */
+  .drone-highlight {
+    opacity: 0.8;
+    transform: scale(1) translateY(0);
+    transition:
+      opacity var(--dur-base) var(--ease-out-soft),
+      transform var(--dur-slow) var(--ease-out-soft),
+      filter var(--dur-slow) var(--ease-out-soft);
+  }
+
+  .drone-highlight:hover {
+    opacity: 1;
+    transform: scale(1.035) translateY(-6px);
+    filter: drop-shadow(
+      0 12px 30px hsl(var(--brand-h) var(--brand-s) var(--brand-l) / 0.3)
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .drone-highlight:hover {
+      transform: none;
+    }
+  }
+
+  /* Animated underline for text links */
+  .link-underline {
+    background-image: linear-gradient(var(--brand-500), var(--brand-500));
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size var(--dur-base) var(--ease-out-soft);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1.5px;
+  }
+}
+
+@layer utilities {
+  /* Page shell — one container width for the entire site */
+  .container-site {
+    width: 100%;
+    margin-inline: auto;
+    max-width: var(--container-max);
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-site {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Vertical rhythm for page sections */
+  .section-y {
+    padding-block: 4rem;
+  }
+  @media (min-width: 768px) {
+    .section-y {
+      padding-block: 6rem;
+    }
+  }
+
+  /* Faint red section background — the workhorse tinted surface */
+  .surface-brand-faint {
+    background-image: linear-gradient(180deg, var(--brand-50) 0%, #fff 100%);
+  }
+
+  /* Dark brand surface for CTA bands */
+  .surface-brand-deep {
+    background-image: linear-gradient(
+      135deg,
+      var(--brand-700) 0%,
+      var(--brand-600) 45%,
+      var(--brand-500) 100%
+    );
+  }
+
+  /* Readable scrim over photography */
+  .scrim-media {
+    background-image: linear-gradient(
+      100deg,
+      hsl(var(--brand-h) 20% 6% / 0.88) 0%,
+      hsl(var(--brand-h) 20% 6% / 0.68) 45%,
+      hsl(var(--brand-h) 20% 6% / 0.25) 100%
+    );
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Hides content visually while keeping it for screen readers */
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   9. ACCESSIBILITY — respect the user's motion preference
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
