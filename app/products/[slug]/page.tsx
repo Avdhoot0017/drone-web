@@ -107,7 +107,7 @@ export default async function ProductDetailPage({
 
       {/* Headline performance figures */}
       <section className="border-b border-ink-200 bg-white" aria-label="Key performance figures">
-        <div className="container-site grid gap-x-8 gap-y-10 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="container-site grid gap-x-8 gap-y-10 py-12 sm:grid-cols-2 lg:grid-cols-5">
           {product.stats.map((stat, index) => (
             <Reveal key={stat.label} delay={index * 90}>
               <StatCounter {...stat} />
@@ -124,7 +124,6 @@ export default async function ProductDetailPage({
           <SectionHeading
             eyebrow="Key features & parameters"
             title={`${product.name} specifications`}
-            intro="Transcribed from the DGCA type certification data sheet."
             className="mb-10 md:mb-14"
           />
 

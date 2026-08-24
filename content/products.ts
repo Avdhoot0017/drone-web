@@ -63,11 +63,11 @@ const himalayaSpecifications = [
 export const himalaya: ProductEntry = {
   slug: "himalaya-agriculture-spraying-drone",
   href: routes.himalaya,
-  name: "Himalaya",
-  category: "Agriculture Spraying Drone",
-  eyebrow: "DGCA Type Certified UAV",
+  name: "HIMALAYA",
+  category: "Agrochemical spraying drone",
+  eyebrow: "DGCA Type-certified UAV",
   summary:
-    "Schnell's indigenous hexacopter for agrochemical spraying — a 10 litre tank, four flat-jet nozzles and a full failsafe suite, type certified by the DGCA and built for Indian field conditions.",
+    "Schnell Drone Technologies' indigenous hexacopter HIMALAYA for agrochemical spraying — a 10 litre tank, four flat-jet nozzles and a full failsafe suite, Type-certified by the DGCA and built for Indian field conditions.",
 
   metaTitle: "Himalaya Agriculture Spraying Drone | DGCA Type Certified",
   metaDescription:
@@ -83,7 +83,7 @@ export const himalaya: ProductEntry = {
   ],
 
   hero: {
-    src: "/images/doc/himalaya-spraying-field.jpeg",
+    src: "/images/stock/hero-02-himalaya.jpg",
     alt: "Himalaya agricultural spraying drone hovering over a pomegranate orchard with an operator standing nearby",
   },
   thumbnail: {
@@ -91,10 +91,12 @@ export const himalaya: ProductEntry = {
     alt: "Himalaya agricultural spraying drone in flight over a farm field",
   },
 
-  badges: ["DGCA Type Certified", "Made in India", "Hexacopter", "10 L tank"],
+  badges: ["DGCA Type-certified", "Made in India", "Hexacopter", "10 L tank"],
 
   stats: [
-    { value: 6, suffix: " acres", label: "Covered per hour", hint: "One acre in about 7 minutes" },
+    { value: 7, suffix: " min", label: "Per acre", hint: "Typical spraying time" },
+    // Hint no longer repeats the per-acre time — it now has its own figure above.
+    { value: 6, suffix: " acres", label: "Covered per hour", hint: "Sustained coverage rate" },
     { value: 30, suffix: " acres", label: "Per day", hint: "With multiple battery sets" },
     { value: 10, suffix: " L", label: "Tank capacity", hint: "Four flat-jet nozzles" },
     { value: 28.5, suffix: " kg", label: "Max all-up weight", hint: "Including full payload" },
@@ -138,8 +140,8 @@ export const himalaya: ProductEntry = {
         { value: 7, suffix: " min", label: "Per acre", hint: "Typical spraying time" },
         { value: 6, suffix: " acres", label: "Per hour", hint: "Sustained coverage rate" },
         {
-          value: 25,
-          suffix: "–30 acres",
+          value: 30,
+          suffix: " acres",
           label: "Per day",
           hint: "With multiple battery sets on rotation",
         },

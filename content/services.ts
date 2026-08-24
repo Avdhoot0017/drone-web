@@ -32,8 +32,8 @@ const coastalSurveillance: ServiceEntry = {
   ],
 
   hero: {
-    src: "/images/stock/coastal-patrol-boat.jpg",
-    alt: "Maritime patrol vessel moving at speed across open coastal water",
+    src: "/images/stock/hero-03-coastal.jpg",
+    alt: "Maritime patrol vessel under way at speed across open coastal water",
   },
   thumbnail: {
     src: "/images/stock/coastal-aerial-fishing.jpg",
@@ -54,17 +54,31 @@ const coastalSurveillance: ServiceEntry = {
       eyebrow: "Operational record",
       heading: "The most experienced player in coastal surveillance",
       intro:
-        "Figures marked “—” are being confirmed by Schnell's operations team and will be published once verified.",
+        "Operational figures from daily coastal deployments across the Maharashtra coast.",
       stats: [
-        // TODO: client to supply the exact figures for the four counters below.
-        { label: "Number of flights", hint: "To be confirmed by Schnell" },
-        { label: "Coastal area surveyed", hint: "To be confirmed by Schnell" },
-        { label: "Flying hours", hint: "To be confirmed by Schnell" },
         {
-          value: 25,
+          value: 10000,
+          suffix: "+",
+          label: "Flights completed",
+          hint: "Daily sorties along the coast",
+        },
+        {
+          value: 815,
+          suffix: " km",
+          label: "Coastline surveyed",
+          hint: "The first daily coastal surveillance programme in India",
+        },
+        {
+          value: 34000,
+          suffix: "+",
+          label: "Flying hours",
+          hint: "Logged across day-light and night-thermal missions",
+        },
+        {
+          value: 23,
           suffix: " km",
           label: "Inside the sea",
-          hint: "Flights up to 25 km offshore, within 12 nautical miles",
+          hint: "Flights up to 23 km offshore, within territorial waters",
         },
       ],
     },
@@ -76,7 +90,7 @@ const coastalSurveillance: ServiceEntry = {
       heading: "India's most experienced coastal drone operator",
       paragraphs: [
         "Schnell Drone Technologies Ltd. is India's most prominent Drone-as-a-Service company, offering its services across multiple domains. It is currently the only drone company operating in the coastal waters of India, up to 12 nautical miles.",
-        "With flights reaching up to 25 km inside the sea, Schnell Drone Technologies is the most experienced player in coastal security and surveillance. The company is currently equipped with a fleet of 9 fixed-wing SWITCH UAVs from ideaForge Technology, plus multiple quadcopters carrying day-time and night-thermal surveillance payloads.",
+        "With flights reaching up to 23 km inside the sea, Schnell Drone Technologies is the most experienced player in coastal security and surveillance. The company is currently equipped with a fleet of 9 fixed-wing SWITCH UAVs from ideaForge Technology, plus multiple quadcopters carrying day-time and night-thermal surveillance payloads.",
       ],
     },
 
@@ -296,8 +310,8 @@ const agricultureSpraying: ServiceEntry = {
   ],
 
   hero: {
-    src: "/images/stock/hero-agri-spray.jpg",
-    alt: "Agricultural drone spraying a crop field with hills in the background",
+    src: "/images/stock/hero-06-agri-service.jpg",
+    alt: "Aerial view of terraced crop fields following the contours of the land",
   },
   thumbnail: {
     src: "/images/stock/agri-spray-aerial.jpg",

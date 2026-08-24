@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
-import { UserRound } from "lucide-react";
+import Image from "next/image";
 
 import { CtaBand } from "@/components/common/cta-band";
+import { TeamSection } from "@/components/sections/team-section";
 import { PageHero } from "@/components/common/page-hero";
 import { Reveal } from "@/components/common/reveal";
 import { SectionHeading } from "@/components/common/section-heading";
 import { managementTeam } from "@/content/company";
 import { routes } from "@/lib/routes";
 import { breadcrumbJsonLd, buildMetadata, jsonLdScript } from "@/lib/seo";
+
+/** First letter of the first and last name, e.g. "Anjani Kumar Agarwal" -> "AA". */
+function initials(name: string) {
+  const parts = name.replace(/^CA\s+/, "").split(" ").filter(Boolean);
+  return ((parts[0]?.[0] ?? "") + (parts.at(-1)?.[0] ?? "")).toUpperCase();
+}
 
 const crumbs = [
   { name: "About Us", href: routes.about },
@@ -56,18 +63,34 @@ export default function ManagementPage() {
             className="mb-12 md:mb-16"
           />
 
-          <div className="space-y-6">
+          <div className="space-y-5">
             {managementTeam.map((person, index) => (
               <Reveal key={person.name} delay={index * 70}>
-                <article className="grid gap-6 rounded-xl border border-ink-200 bg-white p-6 transition-shadow duration-300 hover:shadow-soft md:grid-cols-[auto_minmax(0,1fr)] md:gap-8 md:p-8">
+                <article className="grid gap-6 rounded-xl border border-ink-200 bg-white p-6 transition-shadow duration-300 hover:shadow-soft sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-8 md:p-8">
                   {/*
-                    No photographs were supplied with the client brief, so each
-                    profile renders a neutral monogram avatar until images
-                    arrive. Swapping in a photo means setting `person.image`.
+                    Photographs are circular, face-centred crops. Where none has
+                    been supplied the monogram keeps the row's rhythm intact
+                    rather than leaving a gap.
                   */}
-                  <div className="flex size-20 shrink-0 items-center justify-center rounded-full bg-brand-50 md:size-24">
-                    <UserRound className="size-9 text-brand-400" aria-hidden />
-                  </div>
+                  {person.image ? (
+                    <Image
+                      src={person.image.src}
+                      alt={person.image.alt}
+                      width={600}
+                      height={600}
+                      loading="lazy"
+                      className="size-24 shrink-0 md:size-32 rounded-full object-cover ring-[3px] ring-brand-500 ring-offset-4 ring-offset-white shadow-[0_0_0_1px_var(--brand-200),0_8px_24px_-8px_var(--brand-a40)] transition-shadow duration-300"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden
+                      className="flex size-24 shrink-0 md:size-32 items-center justify-center rounded-full bg-brand-50 ring-[3px] ring-brand-500 ring-offset-4 ring-offset-white shadow-[0_0_0_1px_var(--brand-200),0_8px_24px_-8px_var(--brand-a40)] transition-shadow duration-300"
+                    >
+                      <span className="font-heading text-2xl font-bold text-brand-400 md:text-3xl">
+                        {initials(person.name)}
+                      </span>
+                    </span>
+                  )}
 
                   <div>
                     <h3 className="font-heading text-xl font-bold text-ink-950">
@@ -118,6 +141,8 @@ export default function ManagementPage() {
           </div>
         </div>
       </section>
+
+      <TeamSection className="bg-ink-50" />
 
       <CtaBand
         title="Want to work with this team?"

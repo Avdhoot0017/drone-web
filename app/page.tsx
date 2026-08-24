@@ -10,6 +10,7 @@ import { SectionHeading } from "@/components/common/section-heading";
 import { StatCounter } from "@/components/common/stat-counter";
 import { HomeHero } from "@/components/sections/home-hero";
 import { ServiceCards } from "@/components/sections/service-cards";
+import { TeamSection } from "@/components/sections/team-section";
 import { Testimonials } from "@/components/sections/testimonials";
 import { aboutParagraphs, companyStats } from "@/content/company";
 import { himalaya } from "@/content/products";
@@ -35,17 +36,17 @@ export const metadata: Metadata = buildMetadata({
 const pillars = [
   {
     icon: Radar,
-    title: "Coastal surveillance at 12 NM",
+    title: "Coastal surveillance up to 12 NM",
     description:
-      "The only Indian drone company operating in coastal waters up to 12 nautical miles, with day and night-thermal payloads.",
+      "Day & night operations up to 12 nautical miles offshore — the only Indian drone company flying this far out, with day-light & night-thermal payloads.",
     href: routes.daasCoastalSurveillance,
     proof: ["9 fixed-wing UAVs", "Day & night-thermal"],
   },
   {
     icon: Award,
-    title: "DGCA type certified platform",
+    title: "DGCA Type-certified platform",
     description:
-      "Himalaya, our indigenous hexacopter, is type certified for agrochemical spraying and covers about 6 acres an hour.",
+      "HIMALAYA, our indigenous hexacopter, is Type-certified for agrochemical spraying & covers about 6 acres an hour.",
     href: routes.himalaya,
     proof: ["10 L tank", "6 acres per hour"],
   },
@@ -53,7 +54,7 @@ const pillars = [
     icon: Cpu,
     title: "Geospatial depth since 2010",
     description:
-      "Fifteen years of GIS and photogrammetry underpin every survey — ORI, point clouds, DEM, DTM, DSM and contours in house.",
+      "Fifteen years of GIS & photogrammetry underpin every survey — ORI, point clouds, DEM, DTM, DSM & contours in house.",
     href: routes.daasLandMapping,
     proof: ["50,000+ acres", "500+ villages"],
   },
@@ -61,7 +62,7 @@ const pillars = [
     icon: Wrench,
     title: "Fleet support that keeps flying",
     description:
-      "Preventive, corrective and predictive maintenance for quadcopters, hexacopters and fixed-wing drones.",
+      "Preventive, Corrective & Predictive maintenance by Drone Service Engineers for quadcopters, hexacopters & fixed wing drones.",
     href: routes.repairMaintenance,
     proof: ["Preventive", "Corrective", "Predictive"],
   },
@@ -116,9 +117,9 @@ export default function HomePage() {
         <div className="container-site pointer-events-none relative">
           {/* Constrained so the heading never runs beneath the illustration. */}
           <SectionHeading
-            eyebrow="Why Schnell"
+            eyebrow="Why Schnell Drone Technologies"
             title="Missions that need experience, not just equipment"
-            intro="Coastlines, valleys, forests and glaciers — Schnell has flown them. That operational record is what government agencies, industry and the agriculture sector buy."
+            intro="Coastlines, valleys, forests and glaciers — Schnell Drone Technologies has flown them. That operational record is what government agencies, industry and the agriculture sector buy."
             className="pointer-events-auto mb-12 max-w-xl md:mb-16 lg:max-w-2xl"
           />
 
@@ -208,10 +209,10 @@ export default function HomePage() {
           <Reveal direction="right">
             <p className="mb-3 inline-flex items-center gap-2 rounded-full bg-brand-50 px-3.5 py-1.5 text-xs font-bold tracking-wide text-brand-700 uppercase">
               <Award className="size-3.5" aria-hidden />
-              DGCA Type Certified
+              DGCA Type-certified
             </p>
             <h2 className="font-heading text-3xl leading-tight font-bold text-ink-950 md:text-4xl">
-              Himalaya — our indigenous agriculture spraying drone
+              HIMALAYA — our indigenous agriculture spraying drone
             </h2>
             <p className="mt-5 text-base leading-relaxed text-ink-600 md:text-[1.0625rem]">
               {himalaya.summary}
@@ -344,6 +345,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <TeamSection className="bg-ink-50" />
 
       <Testimonials />
 

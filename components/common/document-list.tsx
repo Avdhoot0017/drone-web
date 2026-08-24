@@ -39,7 +39,12 @@ export function DocumentList({ documents }: { documents: DocumentEntry[] }) {
                   </span>
                 ) : null}
               </span>
-              <span className="mt-0.5 block text-xs text-ink-500">{document.category}</span>
+              <span className="mt-0.5 block text-xs text-ink-500">
+                {document.category}
+                {document.fileSize ? (
+                  <span className="text-ink-300"> · {document.fileSize}</span>
+                ) : null}
+              </span>
             </span>
 
             {available ? (
@@ -60,8 +65,10 @@ export function DocumentList({ documents }: { documents: DocumentEntry[] }) {
             {available ? (
               <a
                 href={document.href}
-                target="_blank"
-                rel="noopener noreferrer"
+                download
+                aria-label={`Download ${document.title}${
+                  document.financialYear ? ` ${document.financialYear}` : ""
+                }${document.fileSize ? ` (${document.fileSize})` : ""}`}
                 className="group flex items-center gap-4 px-5 py-4 transition-colors duration-200 hover:bg-brand-50"
               >
                 {inner}

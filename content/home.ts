@@ -11,9 +11,16 @@ export interface HeroSlide {
   highlight?: string;
   description: string;
   image: ImageRef;
+  /**
+   * CSS `object-position` for this slide's image. The hero is far wider than
+   * most source photos, so `object-cover` crops top and bottom heavily —
+   * a subject near the top of the frame needs the crop shifted upward.
+   * Defaults to `center`.
+   */
+  objectPosition?: string;
   primary: { label: string; href: string };
   secondary?: { label: string; href: string };
-  /** Three short proof points shown beneath the copy. */
+  /** Short proof points shown as chips beneath the copy. */
   facts?: string[];
 }
 
@@ -26,15 +33,17 @@ export interface HeroSlide {
 export const heroSlides: HeroSlide[] = [
   {
     id: "company",
-    eyebrow: "DGCA type certified · Operating since 2010",
-    title: "India's most experienced Drone-as-a-Service company",
+    eyebrow: "DGCA Type-certified product · Operating since 2010",
+    title:
+      "India's Leading Drone Technology Company. Your Most Trusted Drone-as-a-Service Partner.",
     highlight: "Drone-as-a-Service",
     description:
-      "From daily surveillance across an 815 km coastline to Nano Urea spraying with our type certified Himalaya drone — Schnell flies the missions others cannot.",
+      "From safeguarding 815 km of coastline every day to precision agrochemical spraying with type-certified drones, Schnell executes complex drone missions across industries and terrains.",
     image: {
-      src: "/images/stock/hero-agri-spray.jpg",
-      alt: "Agricultural spraying drone in flight over an Indian crop field",
+      src: "/images/stock/hero-01-company.jpg",
+      alt: "Agricultural spraying drone in flight above scrubland, spray boom extended",
     },
+    objectPosition: "center 30%",
     primary: { label: "Explore drone services", href: routes.daas },
     secondary: { label: "Meet the Himalaya drone", href: routes.himalaya },
     facts: ["815 km coastline", "Operating since 2010", "Multi-state operations"],
@@ -42,43 +51,48 @@ export const heroSlides: HeroSlide[] = [
   {
     id: "himalaya",
     eyebrow: "Flagship product",
-    title: "Himalaya — our DGCA type certified spraying drone",
-    highlight: "Himalaya",
+    title: "HIMALAYA — our DGCA Type-certified Agrochemical spraying drone",
+    highlight: "HIMALAYA",
     description:
       "An indigenous hexacopter built for Indian fields: a 10 litre tank, four flat-jet nozzles and a full failsafe suite, covering about six acres an hour.",
     image: {
-      src: "/images/doc/himalaya-spraying-field.jpeg",
-      alt: "Himalaya agricultural spraying drone hovering over a pomegranate orchard",
+      src: "/images/stock/hero-02-himalaya-peaks.jpg",
+      alt: "Snow-capped Himalayan peaks lit by sunrise — the range the Himalaya drone is named after",
     },
     primary: { label: "View full specifications", href: routes.himalaya },
     secondary: { label: "Become a distributor", href: routes.distributor },
-    facts: ["10 L tank", "6 acres per hour", "28.5 kg max all-up weight"],
+    facts: [
+      "10 L tank",
+      "1 acre in 7 min",
+      "6 acres in 1 hour",
+      "About 30 acres in 1 day",
+    ],
   },
   {
     id: "coastal",
     eyebrow: "Coastal security & surveillance",
-    title: "The only Indian drone operator flying 12 NM offshore",
-    highlight: "12 NM offshore",
+    title: "India's Only Drone Operator Flying 12 NM Offshore to Detect IUU Fishing",
+    highlight: "12 NM Offshore",
     description:
-      "Daily patrols for Fisheries departments, Coastal Police, the Coast Guard, the Navy and Customs — with day-light and night-thermal payloads creating court-admissible evidence.",
+      "Daily drone patrols for Fisheries departments with day-light and night-thermal payloads to identify IUU (Illegal, Unreported, Unregulated) fishing, live feeds to Coastal Police, working in close coordination with the Coast Guard, Navy and Customs, creating court-admissible evidence.",
     image: {
-      src: "/images/stock/coastal-patrol-boat.jpg",
-      alt: "Maritime patrol vessel moving at speed through coastal waters",
+      src: "/images/stock/hero-03-coastal.jpg",
+      alt: "Maritime patrol vessel under way at speed through coastal waters",
     },
     primary: { label: "Coastal surveillance", href: routes.daasCoastalSurveillance },
     secondary: { label: "All drone services", href: routes.daas },
-    facts: ["9 fixed-wing SWITCH UAVs", "Up to 25 km inside the sea", "Day & night-thermal"],
+    facts: ["9 fixed-wing SWITCH UAVs", "Up to 23 km inside the sea", "Day & night-thermal"],
   },
   {
     id: "mapping",
-    eyebrow: "Land mapping & survey",
-    title: "Survey-grade geospatial data, without the capital cost",
-    highlight: "Survey-grade",
+    eyebrow: "Land mapping & survey using drones",
+    title: "Advanced Drone Surveying, Mapping & Geospatial Intelligence",
+    highlight: "Geospatial Intelligence",
     description:
       "Ortho-rectified imagery, 3D dense point clouds, DEM, DTM, DSM and contours — including active work on the national SVAMITVA village mapping programme.",
     image: {
-      src: "/images/stock/mapping-surveyor-mountain.jpg",
-      alt: "Surveyor operating a theodolite on a ridge above a valley",
+      src: "/images/stock/hero-04-mapping.jpg",
+      alt: "Aerial view of patchwork farmland parcels divided by tracks and field boundaries",
     },
     primary: { label: "Land mapping & survey", href: routes.daasLandMapping },
     secondary: { label: "Talk to our team", href: routes.contact },
@@ -87,13 +101,13 @@ export const heroSlides: HeroSlide[] = [
   {
     id: "agriculture",
     eyebrow: "Agriculture fertilizer spraying",
-    title: "Nano Urea and Nano DAP sprayed at national scale",
-    highlight: "national scale",
+    title: "Spraying of Agrochemicals including Nano Urea & Nano DAP across multiple states",
+    highlight: "Nano Urea & Nano DAP",
     description:
-      "Consecutive Memorandums of Agreement with IFFCO across Maharashtra, Telangana and Karnataka — where Schnell emerged as a top sprayer among multiple partners.",
+      "Agrochemical and fertilizer spraying over different crops, in all seasons. Memorandums of Agreement with IFFCO for two consecutive years to spray Nano Urea and Nano DAP across Maharashtra, Telangana and Karnataka — where Schnell emerged as a top sprayer at national scale.",
     image: {
-      src: "/images/stock/agri-spray-aerial.jpg",
-      alt: "Aerial view of a drone spraying nano fertilizer across a green field",
+      src: "/images/stock/hero-05-agriculture.jpg",
+      alt: "Aerial view of vast cropland stretching to the horizon under a sunset sky",
     },
     primary: { label: "Agriculture spraying", href: routes.daasAgricultureSpraying },
     secondary: { label: "Meet the Himalaya drone", href: routes.himalaya },

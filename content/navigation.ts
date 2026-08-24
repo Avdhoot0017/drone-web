@@ -17,26 +17,19 @@ export const mainNav: NavItem[] = [
         heading: "Products",
         cards: [
           {
-            label: "Himalaya",
+            label: "HIMALAYA",
             href: routes.himalaya,
             image: "/images/doc/himalaya-spraying-field.jpeg",
             imageAlt:
-              "Himalaya agricultural spraying drone in flight over a pomegranate orchard",
+              "HIMALAYA agricultural spraying drone in flight over a pomegranate orchard",
             caption: "Agriculture spraying drone",
-            badge: "DGCA Type Certified",
-          },
-          {
-            label: "Fleet & Payloads",
-            href: routes.daasCoastalSurveillance,
-            image: "/images/stock/coastal-patrol-boat.jpg",
-            imageAlt: "Coastal patrol vessel monitored by fixed-wing surveillance drones",
-            caption: "Fixed-wing & multirotor UAVs",
+            badge: "DGCA Type-certified",
           },
         ],
       },
       columns: [
         {
-          heading: "Why the Himalaya",
+          heading: "Why the HIMALAYA",
           links: [
             {
               label: "Key Features & Parameters",
@@ -239,7 +232,7 @@ export const mainNav: NavItem[] = [
             {
               label: "Corporate Documents",
               href: routes.investorsDocuments,
-              description: "Memorandum of Association, Articles of Association and Key Managerial Personnel.",
+              description: "Memorandum of Association and Articles of Association.",
             },
           ],
         },

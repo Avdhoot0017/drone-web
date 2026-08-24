@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Info } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 import { CtaBand } from "@/components/common/cta-band";
 import { DocumentList } from "@/components/common/document-list";
 import { PageHero } from "@/components/common/page-hero";
 import { Reveal } from "@/components/common/reveal";
 import { SectionHeading } from "@/components/common/section-heading";
-import { corporateDocuments, financialDocuments, investorNotice } from "@/content/investors";
+import { corporateDocuments, financialDocuments } from "@/content/investors";
 import { routes } from "@/lib/routes";
 import { breadcrumbJsonLd, buildMetadata, jsonLdScript } from "@/lib/seo";
 import { siteConfig } from "@/lib/site-config";
@@ -49,13 +49,6 @@ export default function InvestorsPage() {
       {/* Notice ----------------------------------------------------------- */}
       <section className="section-y">
         <div className="container-site">
-          <Reveal>
-            <p className="flex gap-3 rounded-xl border border-ink-200 bg-ink-50 px-5 py-4 text-sm leading-relaxed text-ink-600">
-              <Info className="mt-0.5 size-4 shrink-0 text-brand-500" aria-hidden />
-              {investorNotice}
-            </p>
-          </Reveal>
-
           {/* Financial information ---------------------------------------- */}
           <div id="financial-information" className="mt-14 scroll-mt-28">
             <SectionHeading
