@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
-import { HimalayaRidge } from "@/components/common/himalaya-ridge";
+import { WaveDivider } from "@/components/common/wave-divider";
 import { heroSlides, type HeroSlide } from "@/content/home";
 import { cn } from "@/lib/utils";
 
@@ -167,6 +167,7 @@ export function HomeHero() {
             loading="eager"
             fetchPriority={index === 0 ? "high" : "auto"}
             sizes="100vw"
+            style={{ objectPosition: slide.objectPosition ?? "center" }}
             className={cn(
               // Drift completes just after the slide hands over, so the
               // movement reads as continuous rather than stopping short.
@@ -179,16 +180,29 @@ export function HomeHero() {
 
       <div className="scrim-media absolute inset-0 -z-10" aria-hidden />
 
+      {/*
+        Brand-red wash rising from the foot of the hero. Sits above the scrim
+        but below the wave, so the photograph warms into the brand colour before
+        handing off to the white curve — and the deepest tint lands exactly where
+        the carousel controls sit, which lifts their contrast.
+      */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-brand-950/55 via-brand-950/20 to-transparent"
+      />
+
       {/* ------------------------------------------------------------------ */}
       {/* Slide content                                                       */}
       {/* ------------------------------------------------------------------ */}
-      {/* Extra bottom padding keeps the controls clear of the ridge silhouette */}
+      {/* Extra bottom padding keeps the controls clear of the wave divider */}
       <div className="container-site relative w-full pt-24 pb-40 md:pt-28 md:pb-48">
         {/*
-          Reserved height sized to the tallest slide, so the controls below do
-          not jump as slides of different lengths cycle through.
+          All slides share a single grid cell, so the block is always as tall as
+          the longest slide. With absolute positioning only the active slide
+          contributed height, so the hero — and the wave pinned to its bottom —
+          shifted every time a longer or shorter slide came round.
         */}
-        <div className="relative min-h-[32rem] max-w-3xl sm:min-h-[30rem]">
+        <div className="grid max-w-3xl">
           {heroSlides.map((slide, index) => (
             <SlideContent
               key={slide.id}
@@ -262,7 +276,7 @@ export function HomeHero() {
       {/* Himalayan ridge — brand signature tying the hero to the flagship    */}
       {/* product name. Sits above the scrim, below the content.              */}
       {/* ------------------------------------------------------------------ */}
-      <HimalayaRidge className="absolute inset-x-0 bottom-0 -z-10 h-40 text-white md:h-64" />
+      <WaveDivider className="absolute inset-x-0 bottom-0 -z-10 h-20 text-white md:h-28" />
 
     </section>
   );
@@ -283,9 +297,20 @@ function SlideContent({
   headingLevel: "h1" | "h2";
   position: string;
 }) {
-  /** Splits the title so the highlighted phrase can be coloured. */
-  const [before, after] = slide.highlight
-    ? slide.title.split(slide.highlight)
+  /**
+   * Splits the title so the highlighted phrase can be coloured.
+   *
+   * The phrase must actually occur in the title. Guarding on that matters:
+   * `split` on a missing phrase returns the whole title, so the highlight span
+   * would then render text that is not in the heading — printing it twice.
+   * Titles get edited often, so this keeps a copy change from breaking the UI.
+   */
+  const highlight =
+    slide.highlight && slide.title.includes(slide.highlight)
+      ? slide.highlight
+      : undefined;
+  const [before, after] = highlight
+    ? slide.title.split(highlight)
     : [slide.title, ""];
 
   return (
@@ -296,9 +321,11 @@ function SlideContent({
       inert={!isActive}
       className={cn(
         "transition-all duration-[600ms] ease-out-soft",
+        // Same grid cell for every slide — see the container comment above.
+        "col-start-1 row-start-1",
         isActive
-          ? "relative opacity-100 blur-0"
-          : "pointer-events-none absolute inset-0 translate-y-4 opacity-0 blur-[2px]"
+          ? "opacity-100 blur-0"
+          : "pointer-events-none translate-y-4 opacity-0 blur-[2px]"
       )}
     >
       <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-white backdrop-blur-sm">
@@ -306,13 +333,13 @@ function SlideContent({
         {slide.eyebrow}
       </p>
 
-      <Heading className="mt-6 font-heading text-4xl leading-[1.05] font-bold text-white md:text-5xl lg:text-[3.75rem]">
+      <Heading className="mt-6 font-heading text-3xl leading-[1.08] font-bold text-white sm:text-4xl md:text-5xl lg:text-[3.25rem]">
         {before}
-        {slide.highlight ? (
+        {highlight ? (
           // `nowrap` keeps hyphenated brand terms such as "Drone-as-a-Service"
           // on a single line instead of breaking them across three.
           <span className="inline-block whitespace-nowrap text-brand-400">
-            {slide.highlight}
+            {highlight}
           </span>
         ) : null}
         {after}

@@ -3,36 +3,40 @@ import type { DocumentEntry } from "@/types/content";
 /**
  * Investor relations content.
  *
- * Every document below is named in the client brief but no PDF has been
- * supplied yet. `href: ""` renders a disabled "document pending" row rather
- * than a broken link — replace with the real file path under
- * `public/documents/` as each PDF arrives.
+ * Documents are self-hosted under `public/documents/` rather than linked to a
+ * third-party drive, so the URLs stay stable and downloads do not depend on
+ * anyone's sharing settings. `href: ""` renders a disabled "pending" row rather
+ * than a broken link.
  */
 
 export const financialDocuments: DocumentEntry[] = [
   {
-    title: "Annual Report",
-    financialYear: "FY 2022-23",
-    category: "Annual Report",
-    href: "",
+    title: "Annual Audit Report",
+    financialYear: "FY 2024-25",
+    category: "Audit Report",
+    href: "/documents/investors/annual-audit-report-fy-2024-25.pdf",
+    fileSize: "PDF · 12.6 MB",
   },
   {
-    title: "Directors' Report",
-    financialYear: "FY 2023-24",
-    category: "Directors' Report",
-    href: "",
-  },
-  {
-    title: "Statutory Audit Report",
+    title: "Annual Audit Report",
     financialYear: "FY 2023-24",
     category: "Audit Report",
-    href: "",
+    href: "/documents/investors/annual-audit-report-fy-2023-24.pdf",
+    fileSize: "PDF · 57.5 MB",
   },
   {
-    title: "Annual Report",
-    financialYear: "FY 2024-25",
-    category: "Annual Report",
-    href: "",
+    title: "Director's Report",
+    financialYear: "FY 2023-24",
+    category: "Directors' Report",
+    href: "/documents/investors/directors-report-fy-2023-24.pdf",
+    fileSize: "PDF · 1.3 MB",
+  },
+  {
+    title: "Annual Audit Report",
+    financialYear: "FY 2022-23",
+    category: "Audit Report",
+    href: "/documents/investors/annual-audit-report-fy-2022-23.pdf",
+    fileSize: "PDF · 17.6 MB",
   },
 ];
 
@@ -40,17 +44,14 @@ export const corporateDocuments: DocumentEntry[] = [
   {
     title: "Memorandum of Association (MOA)",
     category: "Constitutional document",
-    href: "",
+    href: "/documents/officials/moa-schnell-drone-technologies-limited.pdf",
+    fileSize: "PDF · 1.7 MB",
   },
   {
     title: "Articles of Association (AOA)",
     category: "Constitutional document",
-    href: "",
-  },
-  {
-    title: "Key Managerial Personnel",
-    category: "Disclosure",
-    href: "",
+    href: "/documents/officials/aoa-schnell-drone-technologies-limited.pdf",
+    fileSize: "PDF · 18.9 MB",
   },
 ];
 
@@ -78,6 +79,3 @@ export const boardCommittees: { name: string; purpose: string; members: string[]
     members: [],
   },
 ];
-
-export const investorNotice =
-  "Financial statements, disclosures and governance documents are published here as they are approved. Documents marked as pending are being prepared for upload.";

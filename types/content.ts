@@ -196,4 +196,7 @@ export interface DocumentEntry {
   href: string;
   financialYear?: string;
   category: string;
+  /** Shown beside the link, e.g. "PDF · 12.6 MB" — several of these are large
+   *  scanned reports, so the weight is worth stating before someone taps. */
+  fileSize?: string;
 }

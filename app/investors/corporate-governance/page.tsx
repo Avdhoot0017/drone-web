@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { UserRound } from "lucide-react";
+import Image from "next/image";
 
 import { CtaBand } from "@/components/common/cta-band";
 import { PageHero } from "@/components/common/page-hero";
@@ -9,6 +9,12 @@ import { managementTeam } from "@/content/company";
 import { boardCommittees } from "@/content/investors";
 import { routes } from "@/lib/routes";
 import { breadcrumbJsonLd, buildMetadata, jsonLdScript } from "@/lib/seo";
+
+/** First letter of the first and last name, e.g. "Anjani Kumar Agarwal" -> "AA". */
+function initials(name: string) {
+  const parts = name.replace(/^CA\s+/, "").split(" ").filter(Boolean);
+  return ((parts[0]?.[0] ?? "") + (parts.at(-1)?.[0] ?? "")).toUpperCase();
+}
 
 const crumbs = [
   { name: "Investors", href: routes.investors },
@@ -56,19 +62,46 @@ export default function CorporateGovernancePage() {
             className="mb-10 md:mb-12"
           />
 
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {/*
+            Flex-wrap rather than a grid: with five cards the final row holds
+            only two, and flex centres that short row automatically. A grid
+            would leave them stuck to the left-hand columns.
+          */}
+          <div className="flex flex-wrap justify-center gap-5">
             {managementTeam.map((person, index) => (
-              <Reveal key={person.name} delay={index * 70}>
-                <article className="flex h-full items-start gap-4 rounded-xl border border-ink-200 bg-white p-5">
-                  <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-brand-50">
-                    <UserRound className="size-5 text-brand-400" aria-hidden />
-                  </span>
-                  <div>
-                    <h3 className="font-heading text-base font-bold text-ink-950">
-                      {person.name}
-                    </h3>
-                    <p className="mt-1 text-sm text-brand-500">{person.designation}</p>
-                  </div>
+              <Reveal
+                key={person.name}
+                delay={index * 70}
+                className="w-full max-w-xs sm:w-[calc(50%-0.625rem)] lg:w-[calc(33.333%-0.834rem)]"
+              >
+                <article className="flex aspect-square flex-col items-center justify-center rounded-xl border border-ink-200 bg-white p-6 text-center transition-shadow duration-300 hover:shadow-soft">
+                  {/* Same circular crops as the management page. */}
+                  {person.image ? (
+                    <Image
+                      src={person.image.src}
+                      alt={person.image.alt}
+                      width={420}
+                      height={420}
+                      loading="lazy"
+                      className="size-28 md:size-32 rounded-full object-cover ring-[3px] ring-brand-500 ring-offset-4 ring-offset-white shadow-[0_0_0_1px_var(--brand-200),0_8px_24px_-8px_var(--brand-a40)] transition-shadow duration-300"
+                    />
+                  ) : (
+                    <span
+                      aria-hidden
+                      className="flex size-28 md:size-32 items-center justify-center rounded-full bg-brand-50 ring-[3px] ring-brand-500 ring-offset-4 ring-offset-white shadow-[0_0_0_1px_var(--brand-200),0_8px_24px_-8px_var(--brand-a40)] transition-shadow duration-300"
+                    >
+                      <span className="font-heading text-2xl font-bold text-brand-400">
+                        {initials(person.name)}
+                      </span>
+                    </span>
+                  )}
+
+                  <h3 className="mt-5 font-heading text-base leading-snug font-bold text-ink-950">
+                    {person.name}
+                  </h3>
+                  <p className="mt-1.5 text-sm leading-snug text-brand-500">
+                    {person.designation}
+                  </p>
                 </article>
               </Reveal>
             ))}

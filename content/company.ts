@@ -16,27 +16,29 @@ export const visionStatement =
 /** Headline proof points used on the homepage and About page. */
 export const companyStats: Stat[] = [
   {
+    value: 1000,
+    suffix: "+",
+    label: "Clients across drones, GIS & photogrammetry",
+    hint: "Government organisations, Indian Defense, PSUs, private sector, universities and premium educational institutes",
+  },
+  {
+    // 100000 renders as "1,00,000" — StatCounter formats with en-IN grouping.
+    value: 100000,
+    suffix: "+",
+    label: "Missions completed across different terrain",
+    hint: "Flown by an experienced team of DGCA certified drone pilots, right across India",
+  },
+  {
     value: 815,
     suffix: " km",
-    label: "Coastline under daily watch",
-    hint: "First in India to fly daily coastal surveillance at this scale",
+    label: "Coastline under daily drone patrol",
+    hint: "First in India to fly daily coastal patrols to identify IUU fishing and strengthen coastal security",
   },
   {
-    value: 12,
-    suffix: " NM",
-    label: "Into territorial waters",
-    hint: "The only Indian drone company operating this far offshore",
-  },
-  {
-    value: 9,
-    label: "Fixed-wing SWITCH UAVs",
-    hint: "Plus multirotors with day and night-thermal payloads",
-  },
-  {
-    value: 50000,
-    suffix: "+ acres",
-    label: "Mapped under SVAMITVA",
-    hint: "Across more than 500 villages in Uttar Pradesh and Gujarat",
+    value: 275,
+    suffix: "+",
+    label: "Army units & Air Force stations served",
+    hint: "More than 240 Army units across all commands, plus 35+ Air Force stations",
   },
 ];
 
@@ -77,13 +79,17 @@ export const milestones: { year: string; title: string; description: string }[] 
 /**
  * Board and management profiles.
  *
- * NOTE: the client document leaves CA Parag Rathi's profile blank and supplies
- * no photographs. Those fields are intentionally empty and render as a
- * "profile pending" state rather than being invented.
+ * NOTE: CA Parag Rathi's profile is still blank in the client brief, and no
+ * photograph has been supplied for him or for Anjani Kumar Agarwal. Those
+ * fields stay empty and render a placeholder rather than being invented.
  */
 export const managementTeam: PersonEntry[] = [
   {
     name: "Bhushan Sharad Khomane",
+    image: {
+      src: "/images/management/bhushan-khomane-avatar.d328436c.jpg",
+      alt: "Portrait of Bhushan Sharad Khomane",
+    },
     designation: "Chairman & Managing Director",
     age: 48,
     qualifications: [
@@ -97,6 +103,10 @@ export const managementTeam: PersonEntry[] = [
   },
   {
     name: "Satyawan Balwant Jadhav",
+    image: {
+      src: "/images/management/satyawan-jadhav-avatar.716ba328.jpg",
+      alt: "Portrait of Satyawan Balwant Jadhav",
+    },
     designation: "Whole-time Director & Chief Technical Officer",
     age: 47,
     qualifications: ["B.E. Production Engineering, University of Pune"],
@@ -107,6 +117,10 @@ export const managementTeam: PersonEntry[] = [
   },
   {
     name: "Sharmin Sahil Inamdar",
+    image: {
+      src: "/images/management/sharmin-inamdar-avatar.276cd0a7.jpg",
+      alt: "Portrait of Sharmin Sahil Inamdar",
+    },
     designation: "Whole-time Director",
     age: 51,
     qualifications: [
