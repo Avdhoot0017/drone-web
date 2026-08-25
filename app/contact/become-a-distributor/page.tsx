@@ -17,7 +17,7 @@ const crumbs = [
 export const metadata: Metadata = buildMetadata({
   title: "Become a Distributor",
   description:
-    "Partner with Schnell Drone Technologies to distribute the DGCA type certified Himalaya agriculture spraying drone across your state. Enquire on +91 98344 69960.",
+    "Partner with Schnell Drone Technologies to distribute the DGCA type certified Himalaya agriculture spraying drone across your state. Enquire on +91 95118 46050.",
   path: routes.distributor,
   keywords: [
     "agriculture drone distributor India",

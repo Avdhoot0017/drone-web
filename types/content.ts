@@ -90,6 +90,9 @@ export interface SplitBlock extends BaseBlock {
   image: ImageRef;
   /** Which side the image sits on at desktop widths. */
   imageSide?: "left" | "right";
+  /** Frame ratio for the image. Defaults to 4/3 — set it when the source is
+   *  portrait, which the default would crop through the subject. */
+  imageAspect?: "16/10" | "4/3" | "3/2" | "1/1" | "16/9" | "3/4";
   bullets?: string[];
 }
 
@@ -122,6 +125,18 @@ export interface StepsBlock extends BaseBlock {
   }[];
 }
 
+/**
+ * Photographs laid out as a masonry collage with captions.
+ *
+ * Distinct from `gallery`, which forces every image into an identical box.
+ * Here the source ratios vary, so a multi-column flow that lets each photo
+ * keep its own shape reads cleaner than a grid of mismatched crops.
+ */
+export interface CollageBlock extends BaseBlock {
+  type: "collage";
+  images: (ImageRef & { caption?: string })[];
+}
+
 /** Accordion of questions — also emitted as FAQPage structured data. */
 export interface FaqBlock extends BaseBlock {
   type: "faq";
@@ -136,6 +151,7 @@ export type ContentBlock =
   | SplitBlock
   | StatsBlock
   | GalleryBlock
+  | CollageBlock
   | StepsBlock
   | FaqBlock;
 

@@ -260,28 +260,24 @@ const coastalSurveillance: ServiceEntry = {
       type: "gallery",
       heading: "Coastal operations",
       intro:
-        "Operational photography from Schnell's coastal missions is pending; the images below are placeholders.",
+        "Frames from Schnell's own coastal missions off the Maharashtra coast, and the crew preparing a fixed-wing aircraft before launch.",
       columns: 4,
       images: [
         {
-          src: "/images/stock/coastal-aerial-fishing.jpg",
-          alt: "Aerial view of fishing boats operating close to a coastline",
-          placeholder: true,
+          src: "/images/coastal/coastal-led-fishing-detection.webp",
+          alt: "Drone downlink frame showing a fishing boat rigged with LED lights, captured during a coastal surveillance sortie",
         },
         {
-          src: "/images/stock/coastal-guard-ocean.jpg",
-          alt: "Coast guard vessel patrolling open ocean waters",
-          placeholder: true,
+          src: "/images/coastal/coastal-trawler-surveillance.webp",
+          alt: "Drone downlink frame of a trawler with its net deployed alongside a smaller boat, with flight telemetry overlaid",
         },
         {
-          src: "/images/stock/coastal-police-boat.jpg",
-          alt: "Marine police boat on patrol in calm coastal waters",
-          placeholder: true,
+          src: "/images/coastal/coastal-crew-fixed-wing.webp",
+          alt: "Three Schnell crew members with a fixed-wing VTOL drone on a launch mat beside the coast",
         },
         {
-          src: "/images/stock/coastal-rescue-lifeboat.jpg",
-          alt: "Rescue crew conducting a search and rescue operation at sea",
-          placeholder: true,
+          src: "/images/coastal/coastal-crew-launch-prep.webp",
+          alt: "Schnell crew member preparing a fixed-wing VTOL drone for launch on a coastal airstrip",
         },
       ],
     },
@@ -342,11 +338,45 @@ const agricultureSpraying: ServiceEntry = {
         "50 million farmers reached through that network",
         "Three states covered in the first two seasons",
       ],
+      // Square frame: the source is portrait, and the default 4/3 crop cut
+      // straight through the operator's head.
+      imageAspect: "1/1",
       image: {
-        src: "/images/stock/agri-two-farmers.jpg",
-        alt: "Two farmers preparing a spraying drone at the edge of a field",
-        placeholder: true,
+        src: "/images/agri/schnell-field-operator.webp",
+        alt: "Schnell field operator with branded service panniers on a motorcycle beside a standing crop, ready for a Nano Urea spraying run",
       },
+    },
+    {
+      id: "iffco-agreements",
+      type: "collage",
+      tone: "muted",
+      eyebrow: "On the record",
+      heading: "Two seasons, two agreements signed with IFFCO",
+      intro:
+        "Memorandums of Agreement covering the Kharif and Rabi seasons, and the renewal that doubled the scope of spraying.",
+      images: [
+        {
+          src: "/images/iffco/iffco-renewed-agreement.webp",
+          alt: "IFFCO announcement that the agreement with Schnell Drone Technologies has been renewed with doubled scope",
+          caption:
+            "IFFCO renews the agreement and doubles the scope of agrochemical spraying.",
+        },
+        {
+          src: "/images/iffco/iffco-moa-kharif.webp",
+          alt: "Schnell and IFFCO representatives exchanging the signed Memorandum of Agreement for the Kharif season",
+          caption: "Memorandum of Agreement signed for the Kharif season.",
+        },
+        {
+          src: "/images/iffco/iffco-moa-rabi.webp",
+          alt: "Schnell and IFFCO representatives with the signed Memorandum of Agreement for the Rabi season",
+          caption: "Memorandum of Agreement signed for the Rabi season.",
+        },
+        {
+          src: "/images/iffco/iffco-team-meeting.webp",
+          alt: "Schnell Drone Technologies team members at an IFFCO office ahead of the spraying season",
+          caption: "The Schnell team at IFFCO ahead of the season.",
+        },
+      ],
     },
 
     // Shared with the Himalaya product page — one definition, two pages.
@@ -355,19 +385,22 @@ const agricultureSpraying: ServiceEntry = {
     {
       id: "gallery",
       type: "gallery",
-      heading: "Spraying operations",
-      intro: "Field photography pending from Schnell; images below are placeholders.",
-      columns: 2,
+      heading: "The platform behind the spraying",
+      intro:
+        "Nano Urea and Nano DAP are applied with Schnell's own DGCA type certified HIMALAYA hexacopter.",
+      columns: 3,
       images: [
         {
-          src: "/images/stock/agri-spray-green.jpg",
-          alt: "Spraying drone applying nano fertilizer over a green crop",
-          placeholder: true,
+          src: "/images/himalaya/himalaya-in-field.webp",
+          alt: "HIMALAYA spraying drone standing ready on a field track before a sortie",
         },
         {
-          src: "/images/stock/agri-farmer-drone.jpg",
-          alt: "Farmer operating a spraying drone in an agricultural field",
-          placeholder: true,
+          src: "/images/himalaya/himalaya-angled-rotors.webp",
+          alt: "HIMALAYA drone from a three-quarter angle showing spray booms and nozzles",
+        },
+        {
+          src: "/images/himalaya/himalaya-display-wide.webp",
+          alt: "HIMALAYA drone with its full rotor span extended",
         },
       ],
     },
@@ -707,8 +740,16 @@ const multispectralMapping: ServiceEntry = {
   blocks: [
     {
       id: "overview",
-      type: "prose",
+      type: "split",
       heading: "Seeing what the eye cannot",
+      imageSide: "right",
+      // The source is portrait; a landscape frame would crop the equipment and
+      // the crew out of a shot whose subject is both.
+      imageAspect: "3/4",
+      image: {
+        src: "/images/multispectral/multispectral-field-processing.webp",
+        alt: "Two Schnell engineers reviewing captured multispectral data on a laptop beside their equipment cases in a field",
+      },
       paragraphs: [
         "Drone-as-a-Service for multispectral mapping is a powerful solution for modern precision agriculture. By integrating drones equipped with multispectral sensors, GPS/RTK positioning, AI, GIS and cloud-based analytics, DaaS provides accurate, timely and actionable information about crop health and field conditions — helping farmers optimise irrigation, fertilizer use and pest management while reducing costs and improving yields.",
         "Multispectral imaging using drones is a niche segment in the agriculture domain, and Schnell Drone Technologies has carried out multiple data acquisition and multispectral data processing projects. India, primarily an agrarian economy, can rely on this technology to bring in the next revolution.",

@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 import { MediaFrame } from "@/components/common/content-blocks";
 import { CtaBand } from "@/components/common/cta-band";
+import { MediaCoverage } from "@/components/sections/media-coverage";
 import { TeamSection } from "@/components/sections/team-section";
 import { PageHero } from "@/components/common/page-hero";
 import { Reveal } from "@/components/common/reveal";
@@ -175,6 +176,8 @@ export default function AboutPage() {
       </section>
 
       <TeamSection className="bg-ink-50" />
+
+      <MediaCoverage />
 
       <CtaBand />
     </>

@@ -12,6 +12,17 @@ export interface ProductEntry extends SeoFields {
   hero: ImageRef;
   thumbnail: ImageRef;
   badges: string[];
+  /** Product photography shown above the specification sheet, as a row of
+   *  equal squares. */
+  gallery?: ImageRef[];
+  /** Downloadable sales brochure. Size and page count are shown to the user so
+   *  they know what they are committing to before the download starts. */
+  brochure?: {
+    href: string;
+    cover: ImageRef;
+    fileSize: string;
+    pages: number;
+  };
   stats: Stat[];
   /** Flat key/value list — also emitted as Product structured data. */
   specifications: { label: string; value: string }[];
@@ -102,6 +113,35 @@ export const himalaya: ProductEntry = {
     { value: 28.5, suffix: " kg", label: "Max all-up weight", hint: "Including full payload" },
   ],
 
+  gallery: [
+    {
+      src: "/images/himalaya/himalaya-angled-rotors.webp",
+      alt: "HIMALAYA drone from a three-quarter angle showing the rotor arms, spray booms and nozzles",
+    },
+    {
+      src: "/images/himalaya/himalaya-front-nameplate.webp",
+      alt: "Front view of the HIMALAYA drone with its tank and undercarriage visible",
+    },
+    {
+      src: "/images/himalaya/himalaya-display-wide.webp",
+      alt: "HIMALAYA drone on display with its full 2030 mm rotor span extended",
+    },
+    {
+      src: "/images/agri/schnell-field-operator.webp",
+      alt: "Schnell field operator with branded service panniers beside a standing crop",
+    },
+  ],
+
+  brochure: {
+    href: "/documents/products/himalaya-brochure.pdf",
+    cover: {
+      src: "/images/himalaya/himalaya-brochure-cover.webp",
+      alt: "Cover of the HIMALAYA brochure showing the drone and its headline figures",
+    },
+    fileSize: "1.2 MB",
+    pages: 4,
+  },
+
   specifications: himalayaSpecifications,
 
   blocks: [
@@ -122,9 +162,8 @@ export const himalaya: ProductEntry = {
         "Automated flight paths for uniform, repeatable coverage",
       ],
       image: {
-        src: "/images/stock/agri-tank-fill.jpg",
-        alt: "Agricultural drone tank being filled with spray liquid before a sortie",
-        placeholder: true,
+        src: "/images/himalaya/himalaya-front-nameplate.webp",
+        alt: "HIMALAYA hexacopter head-on, showing the 10 litre tank and undercarriage",
       },
     },
 
@@ -170,19 +209,16 @@ export const himalaya: ProductEntry = {
       columns: 3,
       images: [
         {
-          src: "/images/stock/agri-spray-green.jpg",
-          alt: "Spraying drone applying agrochemicals over a green crop field",
-          placeholder: true,
+          src: "/images/himalaya/himalaya-in-field.webp",
+          alt: "HIMALAYA drone on a field track, rotors folded out and ready to fly",
         },
         {
-          src: "/images/stock/agri-controller.jpg",
-          alt: "Operators using ground control equipment during a spraying sortie",
-          placeholder: true,
+          src: "/images/agri/schnell-field-operator.webp",
+          alt: "Schnell field operator with branded service panniers beside a standing crop",
         },
         {
-          src: "/images/stock/agri-drone-closeup.jpg",
-          alt: "Close-up of an agricultural spraying drone airframe and nozzles",
-          placeholder: true,
+          src: "/images/team/team-field-crew.webp",
+          alt: "Schnell field crew gathered before a day of flying operations",
         },
       ],
     },
@@ -217,7 +253,7 @@ export const himalaya: ProductEntry = {
         {
           question: "Can I become a Himalaya distributor?",
           answer:
-            "Yes. Schnell is expanding across central and northern India and works with regional distribution partners. Contact the sales team on +91 98344 69960 or write to Himalaya@SchnellDroneTech.com.",
+            "Yes. Schnell is expanding across central and northern India and works with regional distribution partners. Contact the sales team on +91 95118 46050 or write to Himalaya@SchnellDroneTech.com.",
         },
       ],
     },

@@ -34,8 +34,8 @@ export const siteConfig = {
     },
     /** Himalaya product sales & distributor enquiries */
     sales: {
-      phone: "+91 98344 69960",
-      phoneHref: "tel:+919834469960",
+      phone: "+91 95118 46050",
+      phoneHref: "tel:+919511846050",
       email: "Himalaya@SchnellDroneTech.com",
     },
   },
