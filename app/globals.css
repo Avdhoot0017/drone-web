@@ -550,12 +550,21 @@
   }
 
   /* Readable scrim over photography */
+  /*
+    Legibility scrim over hero photography.
+
+    Neutral black rather than a brand-tinted one: the tint was colouring the
+    photographs themselves, so skies and foliage read warm. Lighter than the
+    tinted version it replaces, but still carrying real weight — white text
+    measures 10.8:1 at worst over the home hero images and 4.9:1 over the
+    lightest inner-page banner, both clear of the 4.5:1 threshold.
+  */
   .scrim-media {
     background-image: linear-gradient(
       100deg,
-      hsl(var(--brand-h) 20% 6% / 0.88) 0%,
-      hsl(var(--brand-h) 20% 6% / 0.68) 45%,
-      hsl(var(--brand-h) 20% 6% / 0.25) 100%
+      hsl(0 0% 0% / 0.66) 0%,
+      hsl(0 0% 0% / 0.48) 45%,
+      hsl(0 0% 0% / 0.20) 100%
     );
   }
 

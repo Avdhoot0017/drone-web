@@ -19,9 +19,9 @@ export const mainNav: NavItem[] = [
           {
             label: "HIMALAYA",
             href: routes.himalaya,
-            image: "/images/doc/himalaya-spraying-field.jpeg",
+            image: "/images/himalaya/himalaya-in-field.webp",
             imageAlt:
-              "HIMALAYA agricultural spraying drone in flight over a pomegranate orchard",
+              "HIMALAYA spraying drone standing on a field track with its rotor arms extended",
             caption: "Agriculture spraying drone",
             badge: "DGCA Type-certified",
           },
@@ -77,8 +77,8 @@ export const mainNav: NavItem[] = [
           {
             label: "Coastal Security & Surveillance",
             href: routes.daasCoastalSurveillance,
-            image: "/images/stock/coastal-aerial-fishing.jpg",
-            imageAlt: "Aerial view of fishing vessels along a coastline under drone surveillance",
+            image: "/images/coastal/coastal-crew-fixed-wing.webp",
+            imageAlt: "Schnell crew with a fixed-wing VTOL drone on a launch mat beside the coast",
             caption: "India's only operator up to 12 NM",
             badge: "Flagship",
           },

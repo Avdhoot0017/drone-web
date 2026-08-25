@@ -254,6 +254,50 @@ export function faqJsonLd(faqs: { question: string; answer: string }[]) {
   };
 }
 
+/**
+ * JobPosting structured data — what makes an opening eligible for the jobs
+ * experience in Google Search.
+ *
+ * `datePosted` is required by Google and is the date the role went live on
+ * this site. Postings age out of the jobs index roughly 30 days after that
+ * date unless a `validThrough` is supplied, so refresh `postedOn` in
+ * `content/careers.ts` whenever a role is re-advertised.
+ */
+export function jobPostingJsonLd(job: {
+  id: string;
+  title: string;
+  description: string;
+  location: string;
+  employmentType?: string;
+  postedOn: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "@id": `${siteConfig.url}${routes.careers}#${job.id}`,
+    title: job.title,
+    description: job.description,
+    datePosted: job.postedOn,
+    ...(job.employmentType ? { employmentType: job.employmentType } : {}),
+    hiringOrganization: {
+      "@type": "Organization",
+      name: siteConfig.legalName,
+      sameAs: siteConfig.url,
+      logo: absoluteUrl("/images/brand/logo-schnell.jpg"),
+    },
+    jobLocation: {
+      "@type": "Place",
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: job.location,
+        addressRegion: siteConfig.address.region,
+        addressCountry: siteConfig.address.countryCode,
+      },
+    },
+    directApply: true,
+  };
+}
+
 /** Careers page — a generic hiring organization signal. */
 export function localBusinessJsonLd() {
   return {

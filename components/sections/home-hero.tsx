@@ -181,15 +181,15 @@ export function HomeHero() {
       <div className="scrim-media absolute inset-0 -z-10" aria-hidden />
 
       {/*
-        Brand-red wash rising from the foot of the hero. Sits above the scrim
-        but below the wave, so the photograph warms into the brand colour before
-        handing off to the white curve — and the deepest tint lands exactly where
-        the carousel controls sit, which lifts their contrast.
+        A little extra weight at the foot of the hero, where the carousel
+        controls sit over the brightest part of some photographs. Neutral, not
+        brand-tinted — the red version was colouring the images themselves.
       */}
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-brand-950/55 via-brand-950/20 to-transparent"
+        className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-black/35 via-black/12 to-transparent"
       />
+
 
       {/* ------------------------------------------------------------------ */}
       {/* Slide content                                                       */}
