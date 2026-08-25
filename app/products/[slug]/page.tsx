@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
+import { Download } from "lucide-react";
 
-import { ContentBlocks } from "@/components/common/content-blocks";
+import { ContentBlocks, MediaFrame } from "@/components/common/content-blocks";
 import { CtaBand } from "@/components/common/cta-band";
 import { PageHero } from "@/components/common/page-hero";
 import { Reveal } from "@/components/common/reveal";
@@ -117,6 +119,35 @@ export default async function ProductDetailPage({
       </section>
 
       {/* ------------------------------------------------------------------ */}
+      {/* Product gallery                                                     */}
+      {/* Four equal squares on one row. A uniform crop lets the eye compare   */}
+      {/* the angles directly, which a mixed-size bento worked against.        */}
+      {/* ------------------------------------------------------------------ */}
+      {product.gallery?.length ? (
+        <section className="section-y bg-ink-50" aria-label={`${product.name} photographs`}>
+          <div className="container-site">
+            <SectionHeading
+              eyebrow="Gallery"
+              title={`${product.name} up close`}
+              className="mb-10 md:mb-12"
+            />
+
+            <div className="grid grid-cols-2 gap-4 lg:grid-cols-4 lg:gap-5">
+              {product.gallery.map((image, index) => (
+                <Reveal key={image.src} delay={index * 80}>
+                  <MediaFrame
+                    image={image}
+                    aspect="1/1"
+                    sizes="(min-width: 1024px) 23vw, 50vw"
+                  />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
+
+      {/* ------------------------------------------------------------------ */}
       {/* Specification sheet                                                 */}
       {/* ------------------------------------------------------------------ */}
       <section id="specifications" className="section-y">
@@ -148,6 +179,65 @@ export default async function ProductDetailPage({
           </Reveal>
         </div>
       </section>
+
+      {/* ------------------------------------------------------------------ */}
+      {/* Brochure download                                                   */}
+      {/* Sits directly after the spec sheet: a reader who has got this far is */}
+      {/* the one who wants the PDF. Size and page count are stated up front   */}
+      {/* so nobody starts a 1.2 MB download blind.                            */}
+      {/* ------------------------------------------------------------------ */}
+      {product.brochure ? (
+        <section className="section-y bg-ink-50" aria-label={`${product.name} brochure`}>
+          <div className="container-site">
+            <Reveal>
+              <div className="grid items-center gap-8 rounded-xl border border-ink-200 bg-white p-6 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-10 md:p-10">
+                {/* Cover renders at its natural page ratio, lightly lifted off
+                    the card so it reads as a physical document. */}
+                <Image
+                  src={product.brochure.cover.src}
+                  alt={product.brochure.cover.alt}
+                  width={438}
+                  height={612}
+                  loading="lazy"
+                  className="mx-auto w-36 rounded-lg border border-ink-200 shadow-lift sm:mx-0 sm:w-44"
+                />
+
+                <div className="text-center sm:text-left">
+                  <p className="text-xs font-bold tracking-[0.14em] text-brand-500 uppercase">
+                    Product brochure
+                  </p>
+                  <h2 className="mt-3 font-heading text-2xl leading-snug font-bold text-ink-950 md:text-3xl">
+                    Download the {product.name} brochure
+                  </h2>
+                  <p className="mt-3 text-base leading-relaxed text-ink-600">
+                    The full sales brochure — performance figures, the complete
+                    specification sheet from the DGCA type certificate, and
+                    distributor contact details.
+                  </p>
+
+                  <a
+                    href={product.brochure.href}
+                    download
+                    aria-label={`Download the ${product.name} brochure, PDF, ${product.brochure.fileSize}, ${product.brochure.pages} pages`}
+                    className="group mt-7 inline-flex items-center gap-2.5 rounded-lg bg-brand-matte px-6 py-3.5 font-heading text-sm font-bold text-white transition-colors duration-300 hover:bg-brand-matte-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+                  >
+                    <Download
+                      className="size-4 transition-transform duration-300 group-hover:translate-y-0.5"
+                      aria-hidden
+                    />
+                    Download brochure
+                  </a>
+
+                  <p className="mt-3.5 text-xs text-ink-500">
+                    PDF &middot; {product.brochure.fileSize} &middot;{" "}
+                    {product.brochure.pages} pages
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
 
       <ContentBlocks blocks={product.blocks} />
 

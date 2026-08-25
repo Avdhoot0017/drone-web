@@ -218,7 +218,7 @@ function BlockBody({ block }: { block: ContentBlock }) {
             direction={block.imageSide === "left" ? "right" : "left"}
             className={cn(block.imageSide === "left" && "lg:order-1")}
           >
-            <MediaFrame image={block.image} aspect="4/3" />
+            <MediaFrame image={block.image} aspect={block.imageAspect ?? "4/3"} />
           </Reveal>
         </div>
       );
@@ -247,6 +247,39 @@ function BlockBody({ block }: { block: ContentBlock }) {
           {block.images.map((image, index) => (
             <Reveal key={image.src + index} delay={index * 70} direction="zoom">
               <MediaFrame image={image} aspect="4/3" />
+            </Reveal>
+          ))}
+        </div>
+      );
+
+    case "collage":
+      return (
+        /*
+          CSS multi-column rather than a grid: these photographs range from
+          portrait to 4:3, and a grid would crop each into a uniform box.
+          `break-inside-avoid` stops one being split across a column boundary.
+          The white mount separates neighbouring photos, which is what a bare
+          edge-to-edge collage was missing.
+        */
+        <div className="columns-1 gap-5 sm:columns-2 lg:columns-3 [&>*]:mb-5">
+          {block.images.map((image, index) => (
+            <Reveal key={image.src} delay={index * 80} className="break-inside-avoid">
+              <figure className="rounded-xl bg-white p-2.5 shadow-lift transition-transform duration-300 hover:-translate-y-1">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={1600}
+                  height={1200}
+                  loading="lazy"
+                  sizes="(min-width: 1024px) 31vw, (min-width: 640px) 47vw, 100vw"
+                  className="h-auto w-full rounded-lg"
+                />
+                {image.caption ? (
+                  <figcaption className="px-1.5 pt-3 pb-1 text-[0.8rem] leading-snug text-ink-500">
+                    {image.caption}
+                  </figcaption>
+                ) : null}
+              </figure>
             </Reveal>
           ))}
         </div>
@@ -337,7 +370,7 @@ export function MediaFrame({
   sizes = "(min-width: 1024px) 45vw, 100vw",
 }: {
   image: { src: string; alt: string; placeholder?: boolean };
-  aspect?: "16/10" | "4/3" | "3/2" | "1/1" | "16/9";
+  aspect?: "16/10" | "4/3" | "3/2" | "1/1" | "16/9" | "3/4";
   className?: string;
   /** Loads eagerly at high fetch priority — for above-the-fold images. */
   priority?: boolean;

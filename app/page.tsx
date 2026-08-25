@@ -253,9 +253,17 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal direction="left">
+            {/*
+              A real photograph of the aircraft rather than the product hero,
+              which is stock. Framed 16/10 because the source is 16/9 and a 4/3
+              crop cuts straight through the left rotor arm.
+            */}
             <MediaFrame
-              image={himalaya.hero}
-              aspect="4/3"
+              image={{
+                src: "/images/himalaya/himalaya-in-field.webp",
+                alt: "HIMALAYA spraying drone standing on a field track with its rotor arms extended, farmland and hills behind",
+              }}
+              aspect="16/10"
               sizes="(min-width: 1024px) 45vw, 100vw"
             />
           </Reveal>
