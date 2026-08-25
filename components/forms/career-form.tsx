@@ -7,6 +7,7 @@ import { initialFormState, submitApplication } from "@/app/actions/enquiry";
 import { SubmitButton } from "@/components/forms/enquiry-form";
 import { controlClasses, Field } from "@/components/forms/field";
 import { cn } from "@/lib/utils";
+import { jobOpenings } from "@/content/careers";
 
 /** Short application form with résumé upload, per the client brief. */
 export function CareerForm() {
@@ -88,14 +89,25 @@ export function CareerForm() {
           required
           errors={state.errors?.position}
         >
+          {/*
+            A datalist rather than a select: applicants can pick one of the
+            advertised roles, but the field stays free text so speculative
+            applications — which the copy alongside invites — still work.
+          */}
           <input
             id="position"
             name="position"
             type="text"
             required
+            list="open-positions"
             className={controlClasses}
-            placeholder="e.g. Drone Pilot, GIS Engineer"
+            placeholder="e.g. UAV Pilot, GIS & Photogrammetry"
           />
+          <datalist id="open-positions">
+            {jobOpenings.map((job) => (
+              <option key={job.id} value={job.title} />
+            ))}
+          </datalist>
         </Field>
 
         <Field name="experience" label="Years of experience" errors={state.errors?.experience}>

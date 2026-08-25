@@ -94,8 +94,8 @@ export const himalaya: ProductEntry = {
   ],
 
   hero: {
-    src: "/images/stock/hero-02-himalaya.jpg",
-    alt: "Himalaya agricultural spraying drone hovering over a pomegranate orchard with an operator standing nearby",
+    src: "/images/himalaya/himalaya-display-wide.webp",
+    alt: "HIMALAYA drone with its full 2030 mm rotor span extended",
   },
   thumbnail: {
     src: "/images/doc/himalaya-spraying-field.jpeg",
