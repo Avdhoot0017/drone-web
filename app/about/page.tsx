@@ -22,7 +22,7 @@ export const metadata: Metadata = buildMetadata({
   description:
     "Schnell Drone Technologies Ltd. — founded in 2010 as a GIS and photogrammetry venture, now one of India's leading Drone-as-a-Service companies, operating across coastlines, valleys, forests and glaciers.",
   path: routes.about,
-  image: "/images/stock/about-drone-mountains.jpg",
+  image: "/images/team/team-group-banner.1d14f2d8.webp",
   keywords: [
     "Schnell Drone Technologies about",
     "drone company Pune",
@@ -44,8 +44,8 @@ export default function AboutPage() {
         title="Fifteen years of geospatial expertise, flown in the field"
         description="From an entrepreneurial GIS venture in 2010 to one of India's leading Drone-as-a-Service companies, operating across multiple states."
         image={{
-          src: "/images/stock/about-drone-mountains.jpg",
-          alt: "Survey drone flying over farmland with a mountain range behind",
+          src: "/images/team/team-group-banner.1d14f2d8.webp",
+          alt: "The Schnell Drone Technologies team gathered on the steps of the Pune office",
         }}
         crumbs={crumbs}
       />
@@ -73,16 +73,16 @@ export default function AboutPage() {
           <Reveal direction="left" className="lg:pt-24">
             <MediaFrame
               image={{
-                src: "/images/doc/himalaya-spraying-field.jpeg",
-                alt: "Himalaya spraying drone hovering over a pomegranate orchard",
+                src: "/images/team/team-field-crew.webp",
+                alt: "Schnell field crew gathered before a day of flying operations",
               }}
               aspect="3/2"
               sizes="(min-width: 1024px) 35vw, 100vw"
             />
             <MediaFrame
               image={{
-                src: "/images/stock/about-precision-ag.jpg",
-                alt: "Drones assisting precision agriculture across rural farmland",
+                src: "/images/team/team-group-outdoor.c4591f6f.webp",
+                alt: "The Schnell Drone Technologies team photographed together outdoors",
               }}
               aspect="3/2"
               className="mt-4"

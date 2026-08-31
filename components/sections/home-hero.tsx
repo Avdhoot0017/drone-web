@@ -172,13 +172,24 @@ export function HomeHero() {
               // Drift completes just after the slide hands over, so the
               // movement reads as continuous rather than stopping short.
               "object-cover transition-transform duration-[6800ms] ease-linear motion-reduce:transform-none",
-              index === active ? "scale-[1.07]" : "scale-100"
+              index === active ? "scale-[1.015]" : "scale-100"
+            )}
+          />
+
+          {/*
+            Scrim lives inside the slide rather than over the whole carousel,
+            so it crossfades with its own photograph and each slide can carry
+            the weight its brightness needs.
+          */}
+          <div
+            aria-hidden
+            className={cn(
+              "absolute inset-0",
+              slide.scrim === "strong" ? "scrim-media-strong" : "scrim-media"
             )}
           />
         </div>
       ))}
-
-      <div className="scrim-media absolute inset-0 -z-10" aria-hidden />
 
       {/*
         A little extra weight at the foot of the hero, where the carousel
