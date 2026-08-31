@@ -79,12 +79,12 @@ export default function ManagementPage() {
                       width={600}
                       height={600}
                       loading="lazy"
-                      className="size-24 shrink-0 md:size-32 rounded-full object-cover ring-[3px] ring-brand-500 ring-offset-4 ring-offset-white shadow-[0_0_0_1px_var(--brand-200),0_8px_24px_-8px_var(--brand-a40)] transition-shadow duration-300"
+                      className="size-28 shrink-0 md:size-36 rounded-full object-cover ring-[3px] ring-brand-500 ring-offset-4 ring-offset-white shadow-[0_0_0_1px_var(--brand-200),0_8px_24px_-8px_var(--brand-a40)] transition-shadow duration-300"
                     />
                   ) : (
                     <span
                       aria-hidden
-                      className="flex size-24 shrink-0 md:size-32 items-center justify-center rounded-full bg-brand-50 ring-[3px] ring-brand-500 ring-offset-4 ring-offset-white shadow-[0_0_0_1px_var(--brand-200),0_8px_24px_-8px_var(--brand-a40)] transition-shadow duration-300"
+                      className="flex size-28 shrink-0 md:size-36 items-center justify-center rounded-full bg-brand-50 ring-[3px] ring-brand-500 ring-offset-4 ring-offset-white shadow-[0_0_0_1px_var(--brand-200),0_8px_24px_-8px_var(--brand-a40)] transition-shadow duration-300"
                     >
                       <span className="font-heading text-2xl font-bold text-brand-400 md:text-3xl">
                         {initials(person.name)}

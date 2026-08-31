@@ -34,22 +34,12 @@ export function SiteFooter() {
               </p>
               <p className="flex gap-3">
                 <Phone className="mt-0.5 size-4 shrink-0 text-brand-400" aria-hidden />
-                <span className="flex flex-col gap-1">
-                  <a
-                    href={siteConfig.contact.general.phoneHref}
-                    className="transition-colors hover:text-white"
-                  >
-                    {siteConfig.contact.general.phone}
-                    <span className="ml-1.5 text-xs text-ink-500">(general)</span>
-                  </a>
-                  <a
-                    href={siteConfig.contact.sales.phoneHref}
-                    className="transition-colors hover:text-white"
-                  >
-                    {siteConfig.contact.sales.phone}
-                    <span className="ml-1.5 text-xs text-ink-500">(sales)</span>
-                  </a>
-                </span>
+                <a
+                  href={siteConfig.contact.sales.phoneHref}
+                  className="transition-colors hover:text-white"
+                >
+                  {siteConfig.contact.sales.phone}
+                </a>
               </p>
               <p className="flex gap-3">
                 <Mail className="mt-0.5 size-4 shrink-0 text-brand-400" aria-hidden />

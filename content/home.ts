@@ -18,6 +18,11 @@ export interface HeroSlide {
    * Defaults to `center`.
    */
   objectPosition?: string;
+  /**
+   * Weight of the legibility scrim. Bright photographs — open sky, sunlit
+   * grass — need more than dark ones for the headline to hold its own.
+   */
+  scrim?: "default" | "strong";
   primary: { label: string; href: string };
   secondary?: { label: string; href: string };
   /** Short proof points shown as chips beneath the copy. */
@@ -56,9 +61,13 @@ export const heroSlides: HeroSlide[] = [
     description:
       "An indigenous hexacopter built for Indian fields: a 10 litre tank, four flat-jet nozzles and a full failsafe suite, covering about six acres an hour.",
     image: {
-      src: "/images/stock/hero-02-himalaya-peaks.jpg",
-      alt: "Snow-capped Himalayan peaks lit by sunrise — the range the Himalaya drone is named after",
+      src: "/images/hero/hero-02-himalaya-spraying.27f0e6aa.webp",
+      alt:
+        "White hexacopter spraying drone hovering low over grassland beside open water",
     },
+    // Brightest of the five — sky and sunlit grass sit right behind the
+    // headline, so this slide carries a heavier scrim than its neighbours.
+    scrim: "strong",
     primary: { label: "View full specifications", href: routes.himalaya },
     secondary: { label: "Become a distributor", href: routes.distributor },
     facts: [
@@ -106,9 +115,13 @@ export const heroSlides: HeroSlide[] = [
     description:
       "Agrochemical and fertilizer spraying over different crops, in all seasons. Memorandums of Agreement with IFFCO for two consecutive years to spray Nano Urea and Nano DAP across Maharashtra, Telangana and Karnataka — where Schnell emerged as a top sprayer at national scale.",
     image: {
-      src: "/images/stock/hero-05-agriculture.jpg",
-      alt: "Aerial view of vast cropland stretching to the horizon under a sunset sky",
+      src: "/images/hero/hero-05-agriculture-sunrise.51a4671b.webp",
+      alt:
+        "Drone operator flying a spraying drone over farmland at sunrise, controller in hand",
     },
+    // Natively widescreen, so almost nothing is cropped. Anchored right so the
+    // operator stays whole at narrower widths, where the sides are trimmed.
+    objectPosition: "right center",
     primary: { label: "Agriculture spraying", href: routes.daasAgricultureSpraying },
     secondary: { label: "Meet the Himalaya drone", href: routes.himalaya },
     facts: ["IFFCO MoA partner", "3 states covered", "25–30 acres per day"],

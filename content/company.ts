@@ -104,7 +104,7 @@ export const managementTeam: PersonEntry[] = [
   {
     name: "Satyawan Balwant Jadhav",
     image: {
-      src: "/images/management/satyawan-jadhav-avatar.716ba328.jpg",
+      src: "/images/management/satyawan-jadhav-avatar.b5f22b29.jpg",
       alt: "Portrait of Satyawan Balwant Jadhav",
     },
     designation: "Whole-time Director & Chief Technical Officer",

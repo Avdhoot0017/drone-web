@@ -34,8 +34,8 @@ const globalMapper: SoftwareEntry = {
     alt: "Aerial survey imagery of farmland used for GIS analysis in Global Mapper",
   },
   hero: {
-    src: "/images/stock/mapping-aerial-farmland.jpg",
-    alt: "Aerial geospatial imagery of agricultural land parcels",
+    src: "/images/software/global-mapper-banner.5799ef92.webp",
+    alt: "Global Mapper running on a laptop, showing a coloured elevation raster and attribute tables",
   },
 
   highlights: [
@@ -61,10 +61,8 @@ const globalMapper: SoftwareEntry = {
         "Scales from a single desktop seat to a department-wide deployment",
       ],
       image: {
-        src: "/images/stock/mapping-aerial-farm-uk.jpg",
-        alt: "Aerial survey imagery of farmland and field boundaries, of the kind analysed in Global Mapper",
-        // TODO: replace with a Global Mapper interface screenshot from Blue Marble.
-        placeholder: true,
+        src: "/images/stock/mapping-aerial-farmland.jpg",
+        alt: "Aerial geospatial imagery of agricultural land parcels, of the kind analysed in Global Mapper",
       },
     },
     {

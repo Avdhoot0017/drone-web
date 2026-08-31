@@ -568,6 +568,20 @@
     );
   }
 
+  /*
+    Heavier variant for bright photographs. Same neutral black and the same
+    left-to-right shape, just more of it — measured to lift white text from
+    7:1 to roughly 10:1 over sunlit grass, matching the darker slides.
+  */
+  .scrim-media-strong {
+    background-image: linear-gradient(
+      100deg,
+      hsl(0 0% 0% / 0.78) 0%,
+      hsl(0 0% 0% / 0.60) 45%,
+      hsl(0 0% 0% / 0.28) 100%
+    );
+  }
+
   .text-balance {
     text-wrap: balance;
   }

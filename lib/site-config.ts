@@ -41,14 +41,19 @@ export const siteConfig = {
   },
 
   address: {
-    street: "Office 402 & 403, Icon Tower, Baner Road",
-    locality: "Pune",
+    street:
+      "531-B, Gera\u2019s Imperium Rise, Plot No 1B, Rajiv Gandhi Infotech Park, Hinjawadi Phase-2, Zone A",
+    locality: "Mulshi, Pune",
     region: "Maharashtra",
-    postalCode: "411045",
+    postalCode: "411057",
     country: "India",
     countryCode: "IN",
-    /** TODO: replace with the exact surveyed coordinates of the office */
-    geo: { latitude: 18.5642, longitude: 73.7769 },
+    /**
+     * TODO: replace with the exact surveyed coordinates of the office. These
+     * are approximate for Hinjawadi Phase 2 — good enough to place the map in
+     * the right locality, not to pin the building.
+     */
+    geo: { latitude: 18.5913, longitude: 73.7389 },
   },
 
   /** TODO: confirm live social profile URLs with the client */

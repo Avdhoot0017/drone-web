@@ -93,6 +93,19 @@ export interface SplitBlock extends BaseBlock {
   /** Frame ratio for the image. Defaults to 4/3 — set it when the source is
    *  portrait, which the default would crop through the subject. */
   imageAspect?: "16/10" | "4/3" | "3/2" | "1/1" | "16/9" | "3/4";
+  /**
+   * Where the block's heading sits. "above" (the default) spans the full
+   * width; "inline" moves it into the text column, so the copy reads as one
+   * unit beside the image instead of a wide title stranded over a half-width
+   * paragraph.
+   */
+  headingPlacement?: "above" | "inline";
+  /**
+   * How the two columns line up. "center" (the default) suits short copy; use
+   * "start" when the column heights are close, so both begin on the same line
+   * instead of one floating against the other.
+   */
+  verticalAlign?: "center" | "start";
   bullets?: string[];
 }
 

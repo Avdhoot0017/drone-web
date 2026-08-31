@@ -31,6 +31,10 @@ export function ContentBlocks({ blocks }: { blocks: ContentBlock[] }) {
 }
 
 function BlockSection({ block }: { block: ContentBlock }) {
+  // A split can carry its own heading inside the text column.
+  const inlineHeading =
+    block.type === "split" && block.headingPlacement === "inline";
+
   return (
     <section
       id={block.id}
@@ -41,7 +45,7 @@ function BlockSection({ block }: { block: ContentBlock }) {
       )}
     >
       <div className="container-site">
-        {block.heading ? (
+        {block.heading && !inlineHeading ? (
           <SectionHeading
             eyebrow={block.eyebrow}
             title={block.heading}
@@ -186,12 +190,26 @@ function BlockBody({ block }: { block: ContentBlock }) {
 
     case "split":
       return (
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
+        <div
+          className={cn(
+            "grid gap-10 lg:grid-cols-2 lg:gap-16",
+            block.verticalAlign === "start" ? "items-start" : "items-center"
+          )}
+        >
           <Reveal
             direction={block.imageSide === "left" ? "left" : "right"}
             className={cn(block.imageSide === "left" && "lg:order-2")}
           >
             <div className="space-y-5">
+              {block.headingPlacement === "inline" && block.heading ? (
+                <SectionHeading
+                  eyebrow={block.eyebrow}
+                  title={block.heading}
+                  intro={block.intro}
+                  className="mb-8"
+                />
+              ) : null}
+
               {block.paragraphs.map((paragraph, index) => (
                 <p
                   key={index}

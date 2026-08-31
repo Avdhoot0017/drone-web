@@ -85,9 +85,23 @@ const coastalSurveillance: ServiceEntry = {
 
     {
       id: "overview",
-      type: "prose",
+      type: "split",
       tone: "muted",
+      // Numbered as the parent of the 1.1 - 1.4 sections that follow it.
+      eyebrow: "1. Overview",
       heading: "India's most experienced coastal drone operator",
+      // Heading joins the copy beside the photograph; full width above it left
+      // the title stranded over a half-width column.
+      headingPlacement: "inline",
+      imageSide: "right",
+      // Square rather than the source's portrait: it halves the height beside
+      // two short paragraphs, and a centred crop still holds all three crew
+      // and the full wingspan.
+      imageAspect: "1/1",
+      image: {
+        src: "/images/coastal/coastal-crew-launch-prep.webp",
+        alt: "Schnell crew preparing a fixed-wing VTOL drone for launch on the coast",
+      },
       paragraphs: [
         "Schnell Drone Technologies Ltd. is India's most prominent Drone-as-a-Service company, offering its services across multiple domains. It is currently the only drone company operating in the coastal waters of India, up to 12 nautical miles.",
         "With flights reaching up to 23 km inside the sea, Schnell Drone Technologies is the most experienced player in coastal security and surveillance. The company is currently equipped with a fleet of 9 fixed-wing SWITCH UAVs from ideaForge Technology, plus multiple quadcopters carrying day-time and night-thermal surveillance payloads.",
@@ -96,9 +110,19 @@ const coastalSurveillance: ServiceEntry = {
 
     {
       id: "iuu-fishing",
-      type: "prose",
+      type: "split",
       eyebrow: "1.1 Fisheries departments",
       heading: "Identifying and curtailing IUU fishing",
+      // Same arrangement as the overview above — heading with its own copy
+      // beside a square frame. Mirrored, so the two sections alternate rather
+      // than stacking two identical left-text blocks.
+      headingPlacement: "inline",
+      imageSide: "left",
+      imageAspect: "1/1",
+      image: {
+        src: "/images/coastal/coastal-purse-seine-net.7923c1ea.webp",
+        alt: "Aerial view of a fishing boat drawing a purse-seine net in a wide circle on open water",
+      },
       paragraphs: [
         "IUU fishing stands for Illegal, Unreported and Unregulated fishing. It encompasses activities like violating closed seasons, catching protected species, misreporting catch volumes, or using banned gear.",
         "IUU fishing accounts for up to 30% of total catches in some of the world's most vital fisheries. It undermines marine conservation efforts, destabilizes coastal economies, and threatens the food security of millions.",
@@ -722,8 +746,8 @@ const multispectralMapping: ServiceEntry = {
   ],
 
   hero: {
-    src: "/images/doc/multispectral-ndvi.png",
-    alt: "NDVI-processed aerial imagery of farmland showing vegetation health as a colour map",
+    src: "/images/multispectral/multispectral-ndvi-raster-calculator.1a04ab46.webp",
+    alt: "NDVI raster of farmland being classified in GIS software, with the index palette and histogram on screen",
   },
   thumbnail: {
     src: "/images/doc/multispectral-rgb.png",
@@ -741,13 +765,20 @@ const multispectralMapping: ServiceEntry = {
     {
       id: "overview",
       type: "split",
+      // Red-rule kicker, matching "Index outputs" further down the page.
+      eyebrow: "Why multispectral",
       heading: "Seeing what the eye cannot",
+      // Heading joins its own copy, and both columns start on the same line —
+      // four long paragraphs beside a portrait frame left the text floating
+      // when it was centred against the taller image.
+      headingPlacement: "inline",
+      verticalAlign: "start",
       imageSide: "right",
       // The source is portrait; a landscape frame would crop the equipment and
       // the crew out of a shot whose subject is both.
       imageAspect: "3/4",
       image: {
-        src: "/images/multispectral/multispectral-field-processing.webp",
+        src: "/images/multispectral/multispectral-field-processing.316cfdd4.webp",
         alt: "Two Schnell engineers reviewing captured multispectral data on a laptop beside their equipment cases in a field",
       },
       paragraphs: [
