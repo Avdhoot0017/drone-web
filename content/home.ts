@@ -22,7 +22,7 @@ export interface HeroSlide {
    * Weight of the legibility scrim. Bright photographs — open sky, sunlit
    * grass — need more than dark ones for the headline to hold its own.
    */
-  scrim?: "default" | "strong";
+  scrim?: "none" | "default" | "strong";
   primary: { label: string; href: string };
   secondary?: { label: string; href: string };
   /** Short proof points shown as chips beneath the copy. */
@@ -85,9 +85,13 @@ export const heroSlides: HeroSlide[] = [
     description:
       "Daily drone patrols for Fisheries departments with day-light and night-thermal payloads to identify IUU (Illegal, Unreported, Unregulated) fishing, live feeds to Coastal Police, working in close coordination with the Coast Guard, Navy and Customs, creating court-admissible evidence.",
     image: {
-      src: "/images/stock/hero-03-coastal.jpg",
-      alt: "Maritime patrol vessel under way at speed through coastal waters",
+      src: "/images/hero/hero-03-coastal-night.5e70679e.webp",
+      alt:
+        "Surveillance drone flying at dusk over a lit fishing trawler offshore, with more vessels on the horizon",
     },
+    // Shot at dusk and already dark — white text measures 11.7:1 on the bare
+    // photograph, so a scrim would only dull it.
+    scrim: "none",
     primary: { label: "Coastal surveillance", href: routes.daasCoastalSurveillance },
     secondary: { label: "All drone services", href: routes.daas },
     facts: ["9 fixed-wing SWITCH UAVs", "Up to 23 km inside the sea", "Day & night-thermal"],
