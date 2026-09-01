@@ -181,13 +181,15 @@ export function HomeHero() {
             so it crossfades with its own photograph and each slide can carry
             the weight its brightness needs.
           */}
-          <div
-            aria-hidden
-            className={cn(
-              "absolute inset-0",
-              slide.scrim === "strong" ? "scrim-media-strong" : "scrim-media"
-            )}
-          />
+          {slide.scrim === "none" ? null : (
+            <div
+              aria-hidden
+              className={cn(
+                "absolute inset-0",
+                slide.scrim === "strong" ? "scrim-media-strong" : "scrim-media"
+              )}
+            />
+          )}
         </div>
       ))}
 
