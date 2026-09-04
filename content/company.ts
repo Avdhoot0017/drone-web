@@ -79,9 +79,9 @@ export const milestones: { year: string; title: string; description: string }[] 
 /**
  * Board and management profiles.
  *
- * NOTE: CA Parag Rathi's profile is still blank in the client brief, and no
- * photograph has been supplied for him or for Anjani Kumar Agarwal. Those
- * fields stay empty and render a placeholder rather than being invented.
+ * NOTE: CA Parag Rathi's profile is still blank in the client brief and no
+ * photograph has been supplied for him. Those fields stay empty and render a
+ * placeholder rather than being invented.
  */
 export const managementTeam: PersonEntry[] = [
   {
@@ -91,7 +91,6 @@ export const managementTeam: PersonEntry[] = [
       alt: "Portrait of Bhushan Sharad Khomane",
     },
     designation: "Chairman & Managing Director",
-    age: 48,
     qualifications: [
       "B.E. Mechanical Engineering, University of Pune",
       "PGDBM, Marketing & International Business",
@@ -108,7 +107,6 @@ export const managementTeam: PersonEntry[] = [
       alt: "Portrait of Satyawan Balwant Jadhav",
     },
     designation: "Whole-time Director & Chief Technical Officer",
-    age: 47,
     qualifications: ["B.E. Production Engineering, University of Pune"],
     bio: [
       "Satyawan Balwant Jadhav is one of the Promoters of Schnell Drone Technologies Ltd. and serves as Whole-time Director and Chief Technical Officer. He holds a bachelor's degree in Production Engineering from the University of Pune.",
@@ -122,26 +120,38 @@ export const managementTeam: PersonEntry[] = [
       alt: "Portrait of Sharmin Sahil Inamdar",
     },
     designation: "Whole-time Director",
-    age: 51,
     qualifications: [
       "B.Sc., University of Pune",
       "M.A. Marketing Management, Pondicherry University",
     ],
     bio: [
       "Sharmin Sahil Inamdar is one of the Promoters of Schnell Drone Technologies Ltd. and serves as a Whole-time Director. She holds a bachelor's degree in Science from the University of Pune and a Master's in Marketing Management from Pondicherry University.",
-      "She has been associated with Schnell since 2010 and earlier worked as Business Development Head for the North India region.",
+      "She has been associated with Schnell since 2010 and earlier worked as Business Development Head for the South India region.",
     ],
   },
   {
     name: "CA Parag Rathi",
+    image: {
+      src: "/images/management/parag-rathi-avatar.c7e6ef8e.jpg",
+      alt: "Portrait of CA Parag Rathi",
+    },
     designation: "Director",
-    // TODO: profile not supplied in the client document — awaiting copy.
-    bio: [],
+    qualifications: ["Chartered Accountant"],
+    // TODO: the client brief supplied no profile for this director. The copy
+    // below states only what his name and designation already establish — it
+    // invents no employer, tenure, institution or achievement. Replace it in
+    // full once the real biography arrives; do not extend it by guesswork.
+    bio: [
+      "CA Parag Rathi serves on the Board of Directors of Schnell Drone Technologies Ltd. He is a qualified Chartered Accountant.",
+    ],
   },
   {
     name: "Anjani Kumar Agarwal",
+    image: {
+      src: "/images/management/anjani-agarwal-avatar.76565db7.jpg",
+      alt: "Portrait of Anjani Kumar Agarwal",
+    },
     designation: "Independent Director",
-    age: 49,
     qualifications: ["Management Graduate"],
     bio: [
       "Anjani Kumar Agarwal is an Independent Director of Schnell Drone Technologies Ltd. He is a Management Graduate and is presently Managing Director & CEO of DRS Dilip Roadlines Limited.",

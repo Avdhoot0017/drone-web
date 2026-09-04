@@ -211,7 +211,6 @@ export interface SoftwareEntry extends SeoFields {
 export interface PersonEntry {
   name: string;
   designation: string;
-  age?: number;
   /** Empty array marks a profile the client has not yet supplied. */
   bio: string[];
   image?: ImageRef;
