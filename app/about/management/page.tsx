@@ -98,11 +98,6 @@ export default function ManagementPage() {
                     </h3>
                     <p className="mt-1 text-sm font-semibold text-brand-500">
                       {person.designation}
-                      {person.age ? (
-                        <span className="ml-2 font-normal text-ink-500">
-                          Aged {person.age} years
-                        </span>
-                      ) : null}
                     </p>
 
                     {person.qualifications?.length ? (
